@@ -1,0 +1,1915 @@
+<!doctype html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSC Examination Online Test - SPEEDY PUBLICATION</title>
+    <style>
+      :root {
+        --primary: #154360;
+        --secondary: #2980b9;
+        --accent: #e67e22;
+        --success: #27ae60;
+        --danger: #c0392b;
+        --warning: #f39c12;
+        --purple: #8e44ad;
+        --light: #f4f6f9;
+        --border: #dcdde1;
+        --dark: #2c3e50;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Top Bar & Header */
+      header {
+        background-color: var(--primary);
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .brand-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .brand-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
+
+      .buy-book-btn {
+        background-color: #f39c12;
+        color: #fff;
+        text-decoration: none;
+        padding: 6px 14px;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 0.85rem;
+        transition: background 0.2s ease;
+        display: inline-block;
+      }
+
+      .buy-book-btn:hover {
+        background-color: #d68910;
+      }
+
+      .system-info {
+        font-size: 0.9rem;
+        text-align: right;
+      }
+
+      /* Layout Wrapper */
+      .quiz-container {
+        display: flex;
+        flex: 1;
+        height: calc(100vh - 58px);
+        overflow: hidden;
+      }
+
+      /* Main Area: Question & Controls */
+      .test-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        padding: 20px;
+        background: #fff;
+      }
+
+      .question-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid var(--border);
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+      }
+
+      .q-number {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .marking-scheme {
+        font-size: 0.85rem;
+        background: #e8f4f8;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-weight: 600;
+      }
+
+      .q-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .options-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .option-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+        background: #fafafa;
+      }
+
+      .option-item:hover:not(.disabled) {
+        background: #edf2f7;
+        border-color: var(--secondary);
+      }
+
+      .option-item.selected {
+        border-color: var(--secondary);
+        background: #ebf5fb;
+      }
+
+      /* Instant Feedback Highlights */
+      .option-item.correct {
+        background-color: #d4edda !important;
+        border-color: #28a745 !important;
+        color: #155724 !important;
+        font-weight: 600;
+      }
+
+      .option-item.incorrect {
+        background-color: #f8d7da !important;
+        border-color: #dc3545 !important;
+        color: #721c24 !important;
+        font-weight: 600;
+      }
+
+      .option-item.disabled {
+        cursor: default;
+      }
+
+      /* Explanation Box */
+      .explanation-box {
+        margin-top: 15px;
+        padding: 16px;
+        background-color: #fcf3cf;
+        border-left: 5px solid var(--warning);
+        border-radius: 4px;
+        display: none;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+
+      .explanation-box.active {
+        display: block;
+      }
+
+      .explanation-title {
+        font-weight: 700;
+        color: #7d6608;
+        margin-bottom: 6px;
+        font-size: 0.95rem;
+      }
+
+      .explanation-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #514205;
+      }
+
+      /* Control Buttons Panel */
+      .control-actions {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid var(--border);
+        padding-top: 16px;
+        margin-top: auto;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-prev,
+      .btn-next {
+        background-color: var(--secondary);
+        color: #fff;
+      }
+
+      .btn-prev:hover,
+      .btn-next:hover {
+        background-color: #1f618d;
+      }
+
+      .btn-review {
+        background-color: var(--purple);
+        color: #fff;
+      }
+
+      .btn-review:hover {
+        background-color: #71368a;
+      }
+
+      .btn-clear {
+        background-color: #e2e8f0;
+        color: var(--dark);
+        border-color: #cbd5e1;
+      }
+
+      .btn-clear:hover {
+        background-color: #cbd5e1;
+      }
+
+      .btn-submit {
+        background-color: var(--success);
+        color: #fff;
+      }
+
+      .btn-submit:hover {
+        background-color: #219653;
+      }
+
+      /* Sidebar: Question Palette */
+      .palette-sidebar {
+        width: 320px;
+        background: #f8fafc;
+        border-left: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .palette-legend {
+        padding: 12px;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        font-size: 0.75rem;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .badge {
+        width: 22px;
+        height: 22px;
+        border-radius: 3px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #fff;
+        font-size: 0.75rem;
+      }
+
+      .badge.not-visited {
+        background: #95a5a6;
+      }
+      .badge.answered {
+        background: var(--success);
+      }
+      .badge.review {
+        background: var(--purple);
+      }
+      .badge.review-answered {
+        background: var(--purple);
+        border: 2px solid #27ae60;
+      }
+      .badge.not-answered {
+        background: var(--danger);
+      }
+
+      .palette-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 15px;
+      }
+
+      .palette-title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .grid-palette {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+      }
+
+      .pal-btn {
+        width: 100%;
+        aspect-ratio: 1;
+        border: 1px solid #bdc3c7;
+        border-radius: 4px;
+        background: #95a5a6;
+        color: #fff;
+        font-weight: bold;
+        font-size: 0.85rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.1s;
+      }
+
+      .pal-btn:active {
+        transform: scale(0.95);
+      }
+
+      .pal-btn.active-q {
+        outline: 2px solid #000;
+        outline-offset: 2px;
+      }
+
+      .pal-btn.not-visited {
+        background: #95a5a6;
+      }
+      .pal-btn.not-answered {
+        background: var(--danger);
+      }
+      .pal-btn.answered {
+        background: var(--success);
+      }
+      .pal-btn.review {
+        background: var(--purple);
+      }
+      .pal-btn.review-answered {
+        background: var(--purple);
+        box-shadow: inset 0 0 0 3px #2ecc71;
+      }
+
+      /* Modal Styles for Result View */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        padding: 15px;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal-card {
+        background: #fff;
+        width: 100%;
+        max-width: 600px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        animation: zoomIn 0.25s ease;
+      }
+
+      .modal-header {
+        background: var(--primary);
+        color: #fff;
+        padding: 16px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .modal-body {
+        padding: 20px;
+      }
+
+      .score-summary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .score-card {
+        background: #f8fafc;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 14px;
+        text-align: center;
+      }
+
+      .score-card-label {
+        font-size: 0.85rem;
+        color: #64748b;
+        margin-bottom: 4px;
+      }
+
+      .score-card-val {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--primary);
+      }
+
+      .modal-footer {
+        display: flex;
+        justify-content: center;
+        padding: 15px;
+        background: #f1f5f9;
+        gap: 10px;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 860px) {
+        .quiz-container {
+          flex-direction: column;
+          height: auto;
+          overflow: visible;
+        }
+        .test-area {
+          height: auto;
+        }
+        .palette-sidebar {
+          width: 100%;
+          border-left: none;
+          border-top: 2px solid var(--border);
+          height: auto;
+        }
+        .grid-palette {
+          grid-template-columns: repeat(10, 1fr);
+        }
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+        .system-info {
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Navigation Header -->
+    <header>
+      <div class="brand-section">
+        <div class="brand-title" id="uiBrandName">SPEEDY PUBLICATION</div>
+        <a href="#" target="_blank" class="buy-book-btn" id="uiBuyBookBtn"
+          >📚 BUY LATEST EDITION SPEEDY BOOK</a
+        >
+      </div>
+      <div class="system-info">
+        <div>SSC Examination Interface</div>
+        <small style="color: #cbd5e1"
+          >Current Affairs Special: Global & National Summits</small
+        >
+      </div>
+    </header>
+
+    <!-- Main Split Layout -->
+    <div class="quiz-container">
+      <!-- Question Area -->
+      <main class="test-area">
+        <div class="question-header">
+          <div class="q-number" id="qNumberDisplay">Question No. 1</div>
+          <div class="marking-scheme">Marks: +1 | Negative: 0</div>
+        </div>
+
+        <div class="q-text" id="qTextDisplay">प्रश्न लोड हो रहा है...</div>
+
+        <div class="options-list" id="optionsContainer">
+          <!-- Options rendered dynamically -->
+        </div>
+
+        <!-- Instant Feedback Explanation -->
+        <div class="explanation-box" id="explanationBox">
+          <div class="explanation-title">💡 सही उत्तर एवं व्याख्या:</div>
+          <div class="explanation-text" id="explanationText"></div>
+        </div>
+
+        <!-- Footer Buttons -->
+        <div class="control-actions">
+          <div class="btn-group">
+            <button class="btn btn-review" id="btnReview">
+              Mark for Review
+            </button>
+            <button class="btn btn-clear" id="btnClear">Clear Response</button>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-prev" id="btnPrev">Previous</button>
+            <button class="btn btn-next" id="btnNext">Save & Next</button>
+            <button class="btn btn-submit" id="btnSubmit">Submit Exam</button>
+          </div>
+        </div>
+      </main>
+
+      <!-- Question Palette Sidebar -->
+      <aside class="palette-sidebar">
+        <div class="palette-legend">
+          <div class="legend-item">
+            <span class="badge not-visited"></span> Not Visited
+          </div>
+          <div class="legend-item">
+            <span class="badge not-answered"></span> Not Answered
+          </div>
+          <div class="legend-item">
+            <span class="badge answered"></span> Answered
+          </div>
+          <div class="legend-item">
+            <span class="badge review"></span> Marked for Review
+          </div>
+        </div>
+        <div class="palette-body">
+          <div class="palette-title">Question Palette</div>
+          <div class="grid-palette" id="paletteGrid">
+            <!-- Palette buttons generated dynamically -->
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Score Summary Modal -->
+    <div class="modal-overlay" id="resultModal">
+      <div class="modal-card">
+        <div class="modal-header">Exam Performance Report</div>
+        <div class="modal-body">
+          <div class="score-summary-grid">
+            <div class="score-card">
+              <div class="score-card-label">Total Questions</div>
+              <div class="score-card-val" id="resTotal">77</div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Total Score</div>
+              <div class="score-card-val" id="resScore">0</div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Correct Answers</div>
+              <div
+                class="score-card-val"
+                style="color: var(--success)"
+                id="resCorrect"
+              >
+                0
+              </div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Incorrect Answers</div>
+              <div
+                class="score-card-val"
+                style="color: var(--danger)"
+                id="resIncorrect"
+              >
+                0
+              </div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Attempted Questions</div>
+              <div class="score-card-val" id="resAttempted">0</div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Percentage Score</div>
+              <div class="score-card-val" id="resPercentage">0%</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-next" onclick="closeModalAndReview()">
+            Review Questions
+          </button>
+          <button class="btn btn-clear" onclick="resetQuizData()">
+            Retake Test
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* ==========================================================================
+                   CONFIGURABLE BRANDING & LINKS
+                   ========================================================================== */
+      const APP_CONFIG = {
+        brandName: "SPEEDY PUBLICATION",
+        buyBookUrl: "https://amzn.in/d/0hwIeqas",
+        marking: {
+          correct: 1,
+          incorrect: 0,
+        },
+        storageKey: "speedy_quiz_sep2026_77_state_v2",
+      };
+
+      /* ==========================================================================
+                   ALL 77 QUESTIONS WITH RANDOM CORRECT ANSWERS & DETAILED EXPLANATIONS
+                   ========================================================================== */
+      const questionsData = [
+         {
+          id: 201,
+          question:
+            "इंटरनेशनल बिग कैट अलायंस का 27वां सदस्य देश कौन बन गया है?",
+          options: ["बांग्लादेश", "नेपाल", "श्रीलंका", "म्यांमार"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: बांग्लादेश",
+        },
+
+        {
+          id: 202,
+          question:
+            "UK संसद में किस भारतीय को 'ग्लोबल प्रेस्टीज अवार्ड' दिया गया है?",
+          options: [
+            "पीयूष गोयल",
+            "हर्ष वर्धन",
+            "डॉ. एस. जयशंकर",
+            "अनुराग ठाकुर",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: हर्ष वर्धन",
+        },
+
+        {
+          id: 203,
+          question:
+            "श्री अंबाबाई मंदिर विकास परियोजना किस राज्य में शुरू की गयी है?",
+          options: ["महाराष्ट्र", "गुजरात", "कर्नाटक", "मध्य प्रदेश"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: महाराष्ट्र",
+        },
+
+        {
+          id: 204,
+          question:
+            "QS वर्ल्ड फ्यूचर स्किल्स इंडेक्स 2027 में भारत किस स्थान पर है?",
+          options: ["11वें", "15वें", "13वें", "19वें"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: 13वें",
+        },
+
+        {
+          id: 205,
+          question:
+            "Enterprise AI का इस्तेमाल करने वाला भारत का पहला प्रमुख बंदरगाह कौन बन गया है?",
+          options: [
+            "जवाहरलाल नेहरू बंदरगाह",
+            "वी. ओ. चिदंबरनार बंदरगाह",
+            "कांडला बंदरगाह",
+            "विशाखापत्तनम बंदरगाह",
+          ],
+          correct: 1,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: वी. ओ. चिदंबरनार बंदरगाह",
+        },
+        {
+          id: 206,
+          question:
+            "अंतरराष्ट्रीय पत्रिका टाइम आउट की लिस्ट में शामिल होने वाला भारत का एकमात्र शहर कौन है?",
+          options: ["मुंबई", "जयपुर", "नई दिल्ली", "बेंगलुरु"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: जयपुर",
+        },
+
+        {
+          id: 207,
+          question:
+            "'निर्भय चेतना' कार्यक्रम किस मंत्रालय द्वारा शुरू किया गया है?",
+          options: [
+            "पंचायती राज मंत्रालय",
+            "गृह मंत्रालय",
+            "बाल विकास मंत्रालय",
+            "शिक्षा मंत्रालय",
+          ],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: पंचायती राज मंत्रालय",
+        },
+
+        {
+          id: 208,
+          question:
+            "23 जून, 2026 को दूसरे नागरिक सम्मान समारोह में राष्ट्रपति द्रौपदी मुर्मु द्वारा कितने लोगों को पद्म पुरस्कार से सम्मानित किया गया है?",
+          options: ["55", "60", "65", "72"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: 65",
+        },
+
+        {
+          id: 209,
+          question:
+            "फीफा वर्ल्ड कप के छह संस्करणों में गोल करने वाले पहले खिलाड़ी कौन बन गए हैं?",
+          options: [
+            "लियोनेल मेसी",
+            "क्रिस्टियानो रोनाल्डो",
+            "किलियन एम्बाप्पे",
+            "नेमार",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: क्रिस्टियानो रोनाल्डो",
+        },
+
+        {
+          id: 210,
+          question:
+            "चेन्नई पेट्रोलियम कॉर्पोरेशन लिमिटेड (CPCL) भारत की कौन-सी नवरत्न कंपनी बन गयी है?",
+          options: ["25वीं", "26वीं", "27वीं", "28वीं"],
+          correct: 3,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: 28वीं",
+        },
+
+        {
+          id: 211,
+          question:
+            "ULLAS पहल के तहत भारत का छठा पूर्ण साक्षर राज्य कौन बना है?",
+          options: ["हिमाचल प्रदेश", "उत्तराखंड", "सिक्किम", "गोवा"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: उत्तराखंड",
+        },
+
+        {
+          id: 212,
+          question: "Energy Transition Index 2026 में भारत किस स्थान पर है?",
+          options: ["65वां", "68वां", "70वां", "75वां"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: 70वां",
+        },
+
+        {
+          id: 213,
+          question: "भारत का सॉलिसिटर जनरल किसे नियुक्त किया गया है?",
+          options: [
+            "तुषार मेहता",
+            "आर. वेंकटरमणी",
+            "मुकुल रोहतगी",
+            "हरीश साल्वे",
+          ],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: तुषार मेहता",
+        },
+
+        {
+          id: 214,
+          question: "FIH नेशंस कप 2026 का खिताब किसने जीता है?",
+          options: ["जर्मनी", "स्पेन", "भारत", "नीदरलैंड"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: भारत",
+        },
+
+        {
+          id: 215,
+          question:
+            "कादियान-ब्यास रेलवे लाइन परियोजना किस राज्य से संबंधित है?",
+          options: ["हरियाणा", "पंजाब", "हिमाचल प्रदेश", "राजस्थान"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: पंजाब",
+        },
+
+        {
+          id: 216,
+          question:
+            "12वें अंतर्राष्ट्रीय योग दिवस 2026 (21 जून) की थीम क्या है?",
+          options: [
+            "स्वस्थ वृद्धावस्था के लिए योग",
+            "मानवता के लिए योग",
+            "महिला सशक्तिकरण के लिए योग",
+            "स्वयं और समाज के लिए योग",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: स्वस्थ वृद्धावस्था के लिए योग",
+        },
+
+        {
+          id: 217,
+          question:
+            "दुनिया के सबसे उम्रदराज ज्ञात जमीनी जानवर के रूप में किसे घोषित किया गया है?",
+          options: ["जोनाथन कछुआ", "हैरियट कछुआ", "अद्वैत कछुआ", "टिम कछुआ"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: जोनाथन कछुआ",
+        },
+
+        {
+          id: 218,
+          question:
+            "जेम्स पी. आइजेंस्टीन और मोर्दहाई हेइब्लम के साथ किस भारतीय को भौतिकी में बुल्फ पुरस्कार 2025 से सम्मानित किया गया है?",
+          options: ["सी.एन.आर. राव", "जिनेंद्र जैन", "हरीश चंद्र", "अशोक सेन"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: जिनेंद्र जैन",
+        },
+
+        {
+          id: 219,
+          question: "थोक मूल्य सूचकांक (WPI) का नया आधार वर्ष क्या है?",
+          options: ["2011-12", "2018-19", "2020-21", "2022-23"],
+          correct: 3,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: 2022-23",
+        },
+
+        {
+          id: 220,
+          question: "बार्सिलोना ग्रैंड प्रिक्स 2026 का खिताब किसने जीता है?",
+          options: [
+            "मैक्स वेरस्टैपेन",
+            "लुईस हैमिल्टन",
+            "चार्ल्स लेक्लर",
+            "सार्जियो पेरेज",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: लुईस हैमिल्टन",
+        },
+
+        {
+          id: 221,
+          question:
+            "महिला टी-20 अंतरराष्ट्रीय क्रिकेट में सबसे ज्यादा विकेट लेने वाली गेंदबाज कौन बन गयी हैं?",
+          options: ["निदा डार", "दीप्ति शर्मा", "सोफी एक्लेस्टोन", "एलिस पेरी"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: दीप्ति शर्मा",
+        },
+
+        {
+          id: 222,
+          question:
+            "न्यू डेवलपमेंट बैंक (NDB) में शामिल होने वाला पहला मध्य एशियाई देश कौन बन गया है?",
+          options: [
+            "कजाकिस्तान",
+            "उज्बेकिस्तान",
+            "तुर्कमेनिस्तान",
+            "ताजिकिस्तान",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: उज्बेकिस्तान",
+        },
+
+        {
+          id: 223,
+          question:
+            "17 जून, 2026 को मोम्बासा में आयोजित 11वें 'अवर ओशन कॉन्फ्रेंस' (OOC) के दौरान कितने देशों ने मोम्बासा घोषणा को अपनाया?",
+          options: ["12", "15", "18", "20"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: 15",
+        },
+
+        {
+          id: 224,
+          question:
+            "इंडिया AI मिशन द्वारा लॉन्च किए गए भारत के पहले स्वदेशी एवं परिष्कृत वीडियो-टू-स्टोरी AI मॉडल का नाम क्या है?",
+          options: ["वार्या", "वाणी", "कृत्रिम", "आकाश"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: वार्या",
+        },
+
+        {
+          id: 225,
+          question:
+            "खान क्वेस्ट सैन्य अभ्यास 2026 किस देश में आयोजित किया गया?",
+          options: ["मंगोलिया", "कजाकिस्तान", "भारत", "उज्बेकिस्तान"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: मंगोलिया",
+        },
+
+        {
+          id: 226,
+          question:
+            "एआई स्टार्टअप 'सर्वम एआई' भारत का कौन-सा यूनिकॉर्न बन गया है?",
+          options: ["125वां", "130वां", "135वां", "140वां"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: 130वां",
+        },
+
+        {
+          id: 227,
+          question: "भारत का सबसे ऊँचा विंड टरबाइन कहाँ स्थापित किया गया है?",
+          options: ["तमिलनाडु", "गुजरात", "कर्नाटक", "राजस्थान"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: कर्नाटक",
+        },
+
+        {
+          id: 228,
+          question:
+            "क्यूएस वर्ल्ड यूनिवर्सिटी रैंकिंग 2027 में किस संस्थान को भारत का सर्वोच्च शिक्षण संस्थान घोषित किया गया है?",
+          options: [
+            "आईआईटी बॉम्बे",
+            "आईआईटी दिल्ली",
+            "आईआईएससी बेंगलुरु",
+            "आईआईटी मद्रास",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: आईआईटी दिल्ली",
+        },
+
+        {
+          id: 229,
+          question:
+            "सोशल मीडिया का उपयोग करने के लिए किस देश ने न्यूनतम आयु 15 वर्ष निर्धारित की है?",
+          options: ["संयुक्त अरब अमीरात", "सऊदी अरब", "ओमान", "कतर"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: संयुक्त अरब अमीरात",
+        },
+
+        {
+          id: 230,
+          question:
+            "2025 में किस राज्य ने सबसे अधिक राजकोषीय घाटा दर्ज किया है?",
+          options: ["मेघालय", "मिजोरम", "असम", "नागालैंड"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: मेघालय",
+        },
+
+        {
+          id: 231,
+          question:
+            "विश्व बौद्धिक संपदा संगठन (WIPO) की ग्लोबल टॉप 20 पेटेंट रैंकिंग में शामिल होने वाली एकमात्र भारतीय कंपनी कौन बन गयी है?",
+          options: ["टाटा", "जियो", "इन्फोसिस", "रिलायंस इंडस्ट्रीज"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: जियो",
+        },
+
+        {
+          id: 232,
+          question:
+            "भारत के पहले स्वदेशी एवं परिष्कृत वीडियो-टू-टेक्स्ट AI मॉडल का नाम क्या है?",
+          options: ["वार्या", "वाणी", "अनुवाद", "भाषा"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: वाणी",
+        },
+
+        {
+          id: 233,
+          question: "ATL Bridge समझौता भारत और किस देश के बीच किया गया है?",
+          options: ["फ्रांस", "जर्मनी", "अमेरिका", "जापान"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: फ्रांस",
+        },
+
+        {
+          id: 234,
+          question:
+            "TIME के 100 सबसे प्रभावशाली खिलाड़ियों की सूची 2026 में शामिल एकमात्र भारतीय कौन हैं?",
+          options: [
+            "हरमनप्रीत कौर",
+            "स्मृति मंधाना",
+            "शेफाली वर्मा",
+            "जेमिमा रोड्रिग्स",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: स्मृति मंधाना",
+        },
+
+        {
+          id: 235,
+          question:
+            "भारत ने किस वर्ष तक 155 GW पवन ऊर्जा क्षमता हासिल करने का लक्ष्य निर्धारित किया है?",
+          options: ["2030", "2035", "2040", "2047"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: 2035",
+        },
+
+        {
+          id: 236,
+          question:
+            "एडवांस्ड प्रोस्टेट कैंसर के लिए पहली रेडियोलिगैंड थेरेपी किस देश में लॉन्च की गयी है?",
+          options: ["अमेरिका", "ब्रिटेन", "भारत", "जर्मनी"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: भारत",
+        },
+
+        {
+          id: 237,
+          question: "किस राज्य के 'सारिंदा' वाद्ययंत्र को GI टैग दिया गया है?",
+          options: ["त्रिपुरा", "असम", "मणिपुर", "मेघालय"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: त्रिपुरा",
+        },
+
+        {
+          id: 238,
+          question:
+            "प्रधानमंत्री नरेंद्र मोदी किस यूरोपीय देश की यात्रा करने वाले पहले भारतीय प्रधानमंत्री बन गए हैं?",
+          options: ["ऑस्ट्रिया", "स्लोवाकिया", "चेक गणराज्य", "हंगरी"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: स्लोवाकिया",
+        },
+
+        {
+          id: 239,
+          question:
+            "महिलाओं के लिए प्रियदर्शिनी मुफ्त बस यात्रा योजना किस राज्य में शुरू की गई है?",
+          options: ["केरल", "तमिलनाडु", "कर्नाटक", "आंध्र प्रदेश"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: केरल",
+        },
+
+        {
+          id: 240,
+          question: "दुनिया के पहले ट्रिलियनेयर कौन बन गए हैं?",
+          options: ["बर्नार्ड अरनॉल्ट", "जेफ बेजोस", "एलन मस्क", "गौतम अडानी"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: एलन मस्क",
+        },
+
+        {
+          id: 241,
+          question: "वैश्विक शांति सूचकांक 2026 में भारत कौन-से स्थान पर है?",
+          options: ["122वें", "125वें", "127वें", "130वें"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: 127वें",
+        },
+
+        {
+          id: 242,
+          question: "किस खेल से संबंधित जसपाल राणा का निधन हो गया है?",
+          options: ["शूटिंग", "तीरंदाजी", "एथलेटिक्स", "मुक्केबाजी"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: शूटिंग",
+        },
+
+        {
+          id: 243,
+          question:
+            "किस देश के वैज्ञानिकों ने हिंद महासागर में दुनिया का सबसे बड़ा व्हेल कब्रिस्तान खोजा है?",
+          options: ["चीन", "भारत", "अमेरिका", "ऑस्ट्रेलिया"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: चीन",
+        },
+
+        {
+          id: 244,
+          question:
+            "गिग और प्लेटफॉर्म वर्कर्स के लिए अंतरराष्ट्रीय रोजगार मानक निर्धारित करने वाली पहली वैश्विक संधि को किसने अपनाया?",
+          options: [
+            "अंतरराष्ट्रीय श्रम संगठन",
+            "विश्व बैंक",
+            "विश्व व्यापार संगठन",
+            "संयुक्त राष्ट्र विकास कार्यक्रम",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अंतरराष्ट्रीय श्रम संगठन",
+        },
+
+        {
+          id: 245,
+          question:
+            "अंतरराष्ट्रीय यात्रा के लिए भारत के 'ईजी कनेक्ट मॉडल' के तहत पहला शहर कौन बन गया है?",
+          options: ["नई दिल्ली", "मुंबई", "वाराणसी", "अमृतसर"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: वाराणसी",
+        },
+
+        {
+          id: 246,
+          question:
+            "लोकसभा अध्यक्ष ओम बिरला ने विकसित भारत युवा संसद 2026 का उद्घाटन कहाँ किया?",
+          options: ["नई दिल्ली", "कोटा", "मुंबई", "जयपुर"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: नई दिल्ली",
+        },
+
+        {
+          id: 247,
+          question:
+            "ग्रामीण इलाकों में हाई-स्पीड इंटरनेट कनेक्टिविटी को बढ़ाने के लिए किस राज्य सरकार ने 'प्रोजेक्ट गंगा' शुरू किया है?",
+          options: ["उत्तर प्रदेश", "बिहार", "पश्चिम बंगाल", "उत्तराखंड"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: उत्तर प्रदेश",
+        },
+
+        {
+          id: 248,
+          question:
+            "भारत का पहला एआई-सक्षम हाइपरस्केल डेटा सेंटर कहाँ स्थापित किया जाएगा?",
+          options: ["महाराष्ट्र", "गुजरात", "कर्नाटक", "तेलंगाना"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: महाराष्ट्र",
+        },
+
+        {
+          id: 249,
+          question: "ईरान ने किस देश के खिलाफ 'ऑपरेशन नासर' शुरू किया है?",
+          options: ["इजराइल", "इराक", "अमेरिका", "सऊदी अरब"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: इजराइल",
+        },
+
+        {
+          id: 250,
+          question:
+            "फीफा विश्व कप 2026 के लिए संयुक्त राज्य अमेरिका के साथ कौन से देश सह-मेजबान हैं?",
+          options: [
+            "कनाडा और मेक्सिको",
+            "ब्राजील और अर्जेंटीना",
+            "इंग्लैंड और फ्रांस",
+            "जापान और दक्षिण कोरिया",
+          ],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: कनाडा और मेक्सिको",
+        },
+
+        {
+          id: 251,
+          question:
+            "नॉर्वे शतरंज 2026 का खिताब जीतने वाले पहले भारतीय कौन हैं?",
+          options: [
+            "डी. गुकेश",
+            "आर. प्रज्ञानानंद",
+            "विश्वनाथन आनंद",
+            "अर्जुन एरिगैसी",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: आर. प्रज्ञानानंद",
+        },
+
+        {
+          id: 252,
+          question:
+            "SIPRI ईयरबुक 2026 के अनुसार भारत को परमाणु हथियार के मामले में कौन-सा स्थान दिया गया है?",
+          options: ["पाँचवाँ", "छठा", "सातवाँ", "आठवाँ"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: सातवाँ",
+        },
+
+        {
+          id: 253,
+          question:
+            "अहमदाबाद में आयोजित दुनिया की 'पहली वर्ल्ड योगासन चैंपियनशिप 2026' में भारत ने कौन-सा स्थान हासिल किया है?",
+          options: ["पहला", "दूसरा", "तीसरा", "चौथा"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: पहला",
+        },
+
+        {
+          id: 254,
+          question:
+            "114वें अंतरराष्ट्रीय श्रम सम्मेलन (ILC) का आयोजन कहाँ किया गया?",
+          options: ["जिनेवा", "पेरिस", "न्यूयॉर्क", "वियना"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: जिनेवा",
+        },
+
+        {
+          id: 255,
+          question: "जापान में आयोजित पुरुष U-18 एशिया कप का खिताब किसने जीता?",
+          options: ["दक्षिण कोरिया", "भारत", "जापान", "मलेशिया"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: भारत",
+        },
+
+        {
+          id: 256,
+          question:
+            "सौर ऊर्जा से संचालित चरखों के संचालन को मान्यता देने और बढ़ावा देने वाला भारत का पहला राज्य कौन-सा है?",
+          options: ["उत्तर प्रदेश", "गुजरात", "राजस्थान", "खादी ग्रामोद्योग"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: राजस्थान",
+        },
+
+        {
+          id: 257,
+          question: "SAFF महिला चैंपियनशिप 2026 का खिताब किसने जीता है?",
+          options: ["नेपाल", "बांग्लादेश", "भारत", "भूटान"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: भारत",
+        },
+
+        {
+          id: 258,
+          question:
+            "यूएन मिलिट्री जेंडर एडवोकेट ऑफ द ईयर अवार्ड 2025 से किसे सम्मानित किया गया है?",
+          options: [
+            "अभिलाषा बराक",
+            "दिव्या अजीत कुमार",
+            "पुनीता अरोड़ा",
+            "शिवांगी सिंह",
+          ],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: अभिलाषा बराक",
+        },
+
+        {
+          id: 259,
+          question: "फ्रेंच ओपन 2026 में पुरुष एकल का खिताब किसने जीता है?",
+          options: [
+            "कार्लोस अल्काराज",
+            "अलेक्जेंडर ज्वेरेव",
+            "नोवाक जोकोविच",
+            "जानिक सिनर",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: अलेक्जेंडर ज्वेरेव",
+        },
+
+        {
+          id: 260,
+          question:
+            "अय्यप्पा मंदिर परिसर कहाँ स्थित है जो नवनिर्मित 'सबरीसम' भवन के उद्घाटन के लिए चर्चा में है?",
+          options: ["केरल", "नई दिल्ली", "तमिलनाडु", "कर्नाटक"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: नई दिल्ली",
+        },
+
+        {
+          id: 261,
+          question:
+            "11 जून, 2026 को राम प्रसाद बिस्मिल की कौन-सी जयंती मनाई गई?",
+          options: ["125वीं", "128वीं", "129वीं", "130वीं"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: 129वीं",
+        },
+
+        {
+          id: 262,
+          question:
+            "सुरहा ताल (जयप्रकाश नारायण पक्षी अभ्यारण्य) किस राज्य के बलिया में स्थित है जिसे भारत का 100वां रामसर स्थल घोषित किया गया है?",
+          options: ["बिहार", "उत्तर प्रदेश", "मध्य प्रदेश", "झारखंड"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: उत्तर प्रदेश",
+        },
+
+        {
+          id: 263,
+          question: "फ्रेंच ओपन 2026 में महिला एकल का खिताब किसने जीता है?",
+          options: [
+            "इगा स्वातिएक",
+            "मीरा एंड्रीवा",
+            "आर्यना सबालेंका",
+            "कोको गॉफ",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: मीरा एंड्रीवा",
+        },
+
+        {
+          id: 264,
+          question:
+            "वकील से सीधे सुप्रीम कोर्ट की न्यायाधीश बनने वाली भारत की दूसरी महिला कौन बन गयी हैं?",
+          options: [
+            "इंदु मल्होत्रा",
+            "निकिता सुब्रमण्यम मोहना",
+            "बी.वी. नागरत्ना",
+            "हिमा कोहली",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: निकिता सुब्रमण्यम मोहना",
+        },
+
+        {
+          id: 265,
+          question:
+            "AI-डिजाइन वाली 'Majorana 2' क्वांटम चिप किसने लॉन्च की है?",
+          options: ["गूगल", "आईबीएम", "माइक्रोसॉफ्ट", "इंटेल"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: माइक्रोसॉफ्ट",
+        },
+
+        {
+          id: 266,
+          question:
+            "कोसोवो विश्व टेबल टेनिस चैंपियनशिप का खिताब जीतने वाली सबसे युवा भारतीय महिला खिलाड़ी कौन बन गयी है?",
+          options: [
+            "सुतीर्था मुखर्जी",
+            "मणिका बत्रा",
+            "दिव्यांशी भौमिक",
+            "श्रीजा अकुला",
+          ],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: दिव्यांशी भौमिक",
+        },
+
+        {
+          id: 267,
+          question:
+            "डी. के. शिवकुमार को हाल ही में किस राज्य के 18वें मुख्यमंत्री के रूप में नियुक्त किया गया है?",
+          options: ["कर्नाटक", "तेलंगाना", "आंध्र प्रदेश", "तमिलनाडु"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: कर्नाटक",
+        },
+
+        {
+          id: 268,
+          question:
+            "दुनिया का पहला न्यूक्लियर डस्टबिन किस देश में बनाया जाएगा?",
+          options: ["स्वीडन", "फिनलैंड", "नॉर्वे", "जर्मनी"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: फिनलैंड",
+        },
+
+        {
+          id: 269,
+          question:
+            "सड़क दुर्घटना पीड़ितों की मदद के लिए 'राहवीर' योजना हेतु सड़क मंत्रालय ने किसके साथ साझेदारी की?",
+          options: ["ओला", "उबर", "रैपिडो", "जुमकार"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: रैपिडो",
+        },
+
+        {
+          id: 270,
+          question:
+            "दुनिया का दूसरा सबसे बड़ा सौर ऊर्जा विकास बाजार कौन बन गया है?",
+          options: ["चीन", "अमेरिका", "भारत", "जापान"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: भारत",
+        },
+
+        {
+          id: 271,
+          question:
+            "'मेसालिना बिश्नोई' नामक छिपकली की प्रजाति किस राज्य में खोजी गई?",
+          options: ["राजस्थान", "गुजरात", "मध्य प्रदेश", "हरियाणा"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: राजस्थान",
+        },
+
+        {
+          id: 272,
+          question:
+            "IndiaAI Data Lab लॉन्च करने वाली पहली निजी यूनिवर्सिटी कौन है?",
+          options: [
+            "एमिटी यूनिवर्सिटी",
+            "चंडीगढ़ यूनिवर्सिटी",
+            "लवली प्रोफेशनल यूनिवर्सिटी",
+            "अशोका यूनिवर्सिटी",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: चंडीगढ़ यूनिवर्सिटी",
+        },
+
+        {
+          id: 273,
+          question:
+            "संयुक्त राष्ट्र महासभा के 81वें सत्र का अध्यक्ष कौन नियुक्त हुए हैं?",
+          options: [
+            "डेनिस फ्रांसिस",
+            "खलीलुर रहमान",
+            "साबा कोरोसी",
+            "वोल्कन बोजकिर",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: खलीलुर रहमान",
+        },
+
+        {
+          id: 274,
+          question: "2 जून, 2026 को तेलंगाना का कौन-सा स्थापना दिवस मनाया गया?",
+          options: ["10वां", "12वां", "14वां", "15वां"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: 12वां",
+        },
+
+        {
+          id: 275,
+          question:
+            "हांगकांग में आयोजित 22वीं एशियाई अंडर-20 एथलेटिक्स चैंपियनशिप 2026 में भारत ने कौन-सा स्थान हासिल किया है?",
+          options: ["पहला", "दूसरा", "तीसरा", "चौथा"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: दूसरा",
+        },
+
+        {
+          id: 276,
+          question:
+            "इमिग्रेशन और विदेशियों (संशोधन) नियम, 2026 के तहत किस अवधि को समाप्त कर दिया गया?",
+          options: ["14 दिन", "30 दिन", "7 दिन", "21 दिन"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: 14 दिन",
+        },
+
+        {
+          id: 277,
+          question: "BSE के साथ मिलकर 'प्रोजेक्ट शिखर' किसने लॉन्च किया है?",
+          options: ["फ्लिपकार्ट", "मीशो", "अमेजन", "मिंत्रा"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: मीशो",
+        },
+
+        {
+          id: 278,
+          question:
+            "'नौसेना शौर्य वाटिका' नामक ओपन-एयर संग्रहालय का उद्घाटन कहाँ किया गया है?",
+          options: ["लखनऊ", "वाराणसी", "प्रयागराज", "आगरा"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: लखनऊ",
+        },
+
+        {
+          id: 279,
+          question: "किस देश ने भारतीय आमों पर प्रतिबंध लगाने की घोषणा की है?",
+          options: ["अमेरिका", "जापान", "ऑस्ट्रेलिया", "दक्षिण कोरिया"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: जापान",
+        },
+
+        {
+          id: 280,
+          question:
+            "जून 2026 में 16 वर्ष से कम उम्र के बच्चों के लिए किस देश ने सोशल मीडिया पर प्रतिबंध लगाने की घोषणा की है?",
+          options: ["ब्रिटेन", "सिंगापुर", "इंडोनेशिया", "ऑस्ट्रेलिया"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: ब्रिटेन",
+        },
+
+        {
+          id: 281,
+          question: "चर्चा में रहा ब्यूफोर्ट किला किस देश में स्थित है?",
+          options: ["सीरिया", "लेबनान", "मिस्र", "जॉर्डन"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: लेबनान",
+        },
+
+        {
+          id: 282,
+          question:
+            "'अमोलॉप्स कमल' नामक मेंढक की नई प्रजाति किस राज्य में खोजी गई?",
+          options: ["अरुणाचल प्रदेश", "नागालैंड", "मणिपुर", "असम"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: नागालैंड",
+        },
+
+        {
+          id: 283,
+          question: "शांगरी-ला डायलॉग रक्षा शिखर सम्मेलन कहाँ आयोजित किया गया?",
+          options: ["सिंगापुर", "मलेशिया", "थाईलैंड", "वियतनाम"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: सिंगापुर",
+        },
+
+        {
+          id: 284,
+          question: "IPL 2026 का खिताब किसने जीता है?",
+          options: [
+            "कोलकाता नाइट राइडर्स",
+            "चेन्नई सुपर किंग्स",
+            "रॉयल चैलेंजर्स बेंगलुरु",
+            "मुंबई इंडियंस",
+          ],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: रॉयल चैलेंजर्स बेंगलुरु",
+        },
+
+        {
+          id: 285,
+          question:
+            "हाल में अंतर्राष्ट्रीय ब्रिक्स कृषि सम्मेलन कहाँ आयोजित किया गया है?",
+          options: ["कोलकाता", "लखनऊ", "दिल्ली", "इंदौर"],
+          correct: 3,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: इंदौर",
+        },
+
+        {
+          id: 286,
+          question: "'आदर्श शहर समृद्धि योजना' किस राज्य में शुरू की गयी है?",
+          options: ["मध्य प्रदेश", "छत्तीसगढ़", "ओडिशा", "झारखंड"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: छत्तीसगढ़",
+        },
+
+        {
+          id: 287,
+          question:
+            "आईएनएस सुदर्शिनी 'लोकायन 26' अभियान के तहत ट्रांस-अटलांटिक यात्रा पूरी करके कहाँ पहुँची है?",
+          options: ["बारबाडोस", "एंटीगुआ", "जमैका", "बहामास"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: एंटीगुआ",
+        },
+
+        {
+          id: 288,
+          question: "30 मई, 2026 को किस राज्य का 40वां स्थापना दिवस मनाया गया?",
+          options: ["गोवा", "मिजोरम", "अरुणाचल प्रदेश", "सिक्किम"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: गोवा",
+        },
+
+        {
+          id: 289,
+          question:
+            "किस अमेरिकी पर्वतारोही ने केवल 9 घंटे 55 मिनट में माउंट एवरेस्ट फतह कर नया स्पीड रिकॉर्ड बनाया है?",
+          options: [
+            "टायलर एंड्रयूज",
+            "जिमी चिन",
+            "एलेक्स हॉनॉल्ड",
+            "कॉनराड एंकर",
+          ],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: टायलर एंड्रयूज",
+        },
+
+        {
+          id: 290,
+          question: "कॉमनवेल्थ गेम्स 2030 में किस नए खेल को शामिल किया गया है?",
+          options: ["योगासन", "मल्लखंभ", "खो-खो", "गतका"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: योगासन",
+        },
+
+        {
+          id: 291,
+          question:
+            "संयुक्त राष्ट्र ने संघर्ष क्षेत्रों में यौन हिंसा के लिए रूस के साथ किस देश को अपनी ब्लैकलिस्ट में शामिल किया है?",
+          options: ["इजराइल", "ईरान", "सीरिया", "यूक्रेन"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: इजराइल",
+        },
+
+        {
+          id: 292,
+          question: "UCC विधेयक पारित करने वाला तीसरा राज्य कौन बन गया है?",
+          options: ["उत्तराखंड", "गुजरात", "असम", "मध्य प्रदेश"],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: असम",
+        },
+
+        {
+          id: 293,
+          question:
+            "पद्मश्री पुरस्कार से सम्मानित बशीर बद्र का हाल ही में निधन हो गया, वे कौन थे?",
+          options: ["वैज्ञानिक", "कवि", "राजनीतिज्ञ", "इतिहासकार"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: कवि",
+        },
+
+        {
+          id: 294,
+          question: "DRDO के अध्यक्ष के रूप में किसे नियुक्त किया गया है?",
+          options: [
+            "डॉ. समीर वी. कामत",
+            "राजेश कुमार सिंह",
+            "जी. सतीश रेड्डी",
+            "एस. सोमनाथ",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: राजेश कुमार सिंह",
+        },
+
+        {
+          id: 295,
+          question: "भारत का पाँचवाँ पूर्ण साक्षर राज्य कौन बन गया है?",
+          options: ["सिक्किम", "मिजोरम", "त्रिपुरा", "उत्तराखंड"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: सिक्किम",
+        },
+
+        {
+          id: 296,
+          question:
+            "चंद्रयान-2 मिशन के किस पेलोड ने चंद्र दक्षिणी ध्रुव क्षेत्र में उप-सतह बर्फ की संभावित उपस्थिति का पता लगाया है?",
+          options: ["OHRC", "IIRS", "CLASS", "DFSAR"],
+          correct: 3,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: DFSAR",
+        },
+
+        {
+          id: 297,
+          question: "कौन-सा देश 5वां सबसे बड़ा शेयर मार्केट बन गया है?",
+          options: ["ताइवान", "दक्षिण कोरिया", "फ्रांस", "जर्मनी"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: ताइवान",
+        },
+
+        {
+          id: 298,
+          question:
+            "ग्लासगो में होने वाले 2026 कॉमनवेल्थ गेम्स के लिए भारत का 'शेप डी मिशन' किसे नियुक्त किया गया है?",
+          options: ["गगन नारंग", "रोहित राजपाल", "पी.टी. उषा", "अभिनव बिंद्रा"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: रोहित राजपाल",
+        },
+
+        {
+          id: 299,
+          question:
+            "भारत का पहला निजी चिकित्सा संग्रहालय कहाँ स्थापित किया गया है?",
+          options: ["केरल", "तमिलनाडु", "कर्नाटक", "महाराष्ट्र"],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: केरल",
+        },
+
+        {
+          id: 300,
+          question:
+            "संसद रत्न पुरस्कार 2026 के लिए कितने सांसदों को चुना गया है?",
+          options: ["10", "12", "15", "18"],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: 12",
+        }
+
+      ];
+
+      /* ==========================================================================
+                   QUIZ STATE MANAGEMENT
+                   ========================================================================== */
+      let currentIndex = 0;
+      // States: 'not-visited', 'not-answered', 'answered', 'review', 'review-answered'
+      let userState = {
+        answers: {}, // { qIndex: selectedOptionIndex }
+        status: {}, // { qIndex: 'status-string' }
+        isSubmitted: false,
+      };
+
+      // Load from LocalStorage if available
+      function loadSavedState() {
+        const saved = localStorage.getItem(APP_CONFIG.storageKey);
+        if (saved) {
+          try {
+            userState = JSON.parse(saved);
+          } catch (e) {
+            console.error("Could not parse saved quiz state", e);
+          }
+        }
+        // Initialize unvisited questions
+        questionsData.forEach((_, idx) => {
+          if (!userState.status[idx]) {
+            userState.status[idx] = "not-visited";
+          }
+        });
+      }
+
+      function persistState() {
+        localStorage.setItem(APP_CONFIG.storageKey, JSON.stringify(userState));
+      }
+
+      /* ==========================================================================
+                   UI RENDERING FUNCTIONS
+                   ========================================================================== */
+      function initializeUI() {
+        document.getElementById("uiBrandName").innerText = APP_CONFIG.brandName;
+        document.getElementById("uiBuyBookBtn").href = APP_CONFIG.buyBookUrl;
+
+        renderPaletteGrid();
+        loadQuestion(currentIndex);
+      }
+
+      function renderPaletteGrid() {
+        const grid = document.getElementById("paletteGrid");
+        grid.innerHTML = "";
+        questionsData.forEach((_, idx) => {
+          const btn = document.createElement("button");
+          btn.className = `pal-btn ${userState.status[idx] || "not-visited"}`;
+          btn.innerText = idx + 1;
+          btn.id = `pal-btn-${idx}`;
+          btn.onclick = () => navigateToQuestion(idx);
+          grid.appendChild(btn);
+        });
+      }
+
+      function updatePaletteButton(idx) {
+        const btn = document.getElementById(`pal-btn-${idx}`);
+        if (!btn) return;
+        btn.className = `pal-btn ${userState.status[idx]}`;
+        if (idx === currentIndex) {
+          btn.classList.add("active-q");
+        }
+      }
+
+      function loadQuestion(index) {
+        currentIndex = index;
+        const q = questionsData[index];
+
+        // If status is not-visited, mark as not-answered upon viewing
+        if (userState.status[index] === "not-visited") {
+          userState.status[index] = "not-answered";
+        }
+
+        // Update question text and headers
+        document.getElementById("qNumberDisplay").innerText =
+          `Question No. ${index + 1} of ${questionsData.length}`;
+        document.getElementById("qTextDisplay").innerText = q.question;
+
+        // Render Options
+        const optionsContainer = document.getElementById("optionsContainer");
+        optionsContainer.innerHTML = "";
+
+        const userChoice = userState.answers[index];
+        const hasAnswered = userChoice !== undefined;
+
+        q.options.forEach((opt, optIdx) => {
+          const optDiv = document.createElement("div");
+          optDiv.className = "option-item";
+          optDiv.innerHTML = `<strong>(${String.fromCharCode(65 + optIdx)})</strong>&nbsp;&nbsp;${opt}`;
+
+          if (hasAnswered) {
+            optDiv.classList.add("disabled");
+            // Highlight logic
+            if (optIdx === q.correct) {
+              optDiv.classList.add("correct");
+            }
+            if (optIdx === userChoice && userChoice !== q.correct) {
+              optDiv.classList.add("incorrect");
+            }
+            if (optIdx === userChoice) {
+              optDiv.classList.add("selected");
+            }
+          } else {
+            optDiv.onclick = () => selectOption(index, optIdx);
+          }
+
+          optionsContainer.appendChild(optDiv);
+        });
+
+        // Show/Hide Explanation
+        const expBox = document.getElementById("explanationBox");
+        const expText = document.getElementById("explanationText");
+        if (hasAnswered) {
+          expText.innerText = q.explanation;
+          expBox.classList.add("active");
+        } else {
+          expBox.classList.remove("active");
+        }
+
+        // Update Active Status on all palette buttons
+        questionsData.forEach((_, i) => {
+          const pBtn = document.getElementById(`pal-btn-${i}`);
+          if (pBtn) {
+            pBtn.classList.remove("active-q");
+            if (i === currentIndex) pBtn.classList.add("active-q");
+          }
+        });
+        updatePaletteButton(index);
+        persistState();
+      }
+
+      /* Option click handler with immediate feedback */
+      function selectOption(qIdx, selectedOptIdx) {
+        if (userState.answers[qIdx] !== undefined) return; // Prevent changing after instant submit
+
+        userState.answers[qIdx] = selectedOptIdx;
+
+        // Update status
+        if (userState.status[qIdx] === "review") {
+          userState.status[qIdx] = "review-answered";
+        } else {
+          userState.status[qIdx] = "answered";
+        }
+
+        loadQuestion(qIdx);
+      }
+
+      function navigateToQuestion(index) {
+        loadQuestion(index);
+      }
+
+      /* ==========================================================================
+                   CONTROL ACTIONS (BUTTONS)
+                   ========================================================================== */
+      document.getElementById("btnNext").onclick = () => {
+        if (currentIndex < questionsData.length - 1) {
+          loadQuestion(currentIndex + 1);
+        }
+      };
+
+      document.getElementById("btnPrev").onclick = () => {
+        if (currentIndex > 0) {
+          loadQuestion(currentIndex - 1);
+        }
+      };
+
+      document.getElementById("btnClear").onclick = () => {
+        if (userState.answers[currentIndex] !== undefined) {
+          delete userState.answers[currentIndex];
+          userState.status[currentIndex] = "not-answered";
+          loadQuestion(currentIndex);
+        }
+      };
+
+      document.getElementById("btnReview").onclick = () => {
+        const currentStat = userState.status[currentIndex];
+        if (userState.answers[currentIndex] !== undefined) {
+          userState.status[currentIndex] =
+            currentStat === "review-answered" ? "answered" : "review-answered";
+        } else {
+          userState.status[currentIndex] =
+            currentStat === "review" ? "not-answered" : "review";
+        }
+        updatePaletteButton(currentIndex);
+        persistState();
+      };
+
+      document.getElementById("btnSubmit").onclick = () => {
+        submitQuiz();
+      };
+
+      /* ==========================================================================
+                   SUBMIT & SCORE CALCULATION
+                   ========================================================================== */
+      function submitQuiz() {
+        let correctCount = 0;
+        let incorrectCount = 0;
+        let attemptedCount = 0;
+
+        questionsData.forEach((q, idx) => {
+          const ans = userState.answers[idx];
+          if (ans !== undefined) {
+            attemptedCount++;
+            if (ans === q.correct) {
+              correctCount++;
+            } else {
+              incorrectCount++;
+            }
+          }
+        });
+
+        const totalMarks = correctCount * APP_CONFIG.marking.correct;
+        const percentage = ((totalMarks / questionsData.length) * 100).toFixed(
+          2,
+        );
+
+        document.getElementById("resTotal").innerText = questionsData.length;
+        document.getElementById("resScore").innerText =
+          `${totalMarks} / ${questionsData.length}`;
+        document.getElementById("resCorrect").innerText = correctCount;
+        document.getElementById("resIncorrect").innerText = incorrectCount;
+        document.getElementById("resAttempted").innerText =
+          `${attemptedCount} (${questionsData.length - attemptedCount} Unattempted)`;
+        document.getElementById("resPercentage").innerText = `${percentage}%`;
+
+        document.getElementById("resultModal").classList.add("active");
+      }
+
+      function closeModalAndReview() {
+        document.getElementById("resultModal").classList.remove("active");
+      }
+
+      function resetQuizData() {
+        if (
+          confirm(
+            "क्या आप वाकई परीक्षा को दोबारा शुरू करना चाहते हैं? आपकी वर्तमान प्रगति मिटा दी जाएगी।",
+          )
+        ) {
+          localStorage.removeItem(APP_CONFIG.storageKey);
+          userState = { answers: {}, status: {}, isSubmitted: false };
+          loadSavedState();
+          renderPaletteGrid();
+          loadQuestion(0);
+          closeModalAndReview();
+        }
+      }
+
+      // Startup
+      window.onload = () => {
+        loadSavedState();
+        initializeUI();
+      };
+    </script>
+  </body>
+</html>

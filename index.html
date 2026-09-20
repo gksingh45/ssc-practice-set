@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SSC Practice Sets</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            color: #1e293b;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 45px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 17px;
+            opacity: 0.9;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title h2 {
+            font-size: 28px;
+            color: #1e3a8a;
+            margin-bottom: 8px;
+        }
+
+        .title p {
+            color: #64748b;
+        }
+
+        /* Cards */
+        .sets {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .set-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 5px 18px rgba(15, 23, 42, 0.10);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .set-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
+        }
+
+        .icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #eff6ff;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .set-card h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+
+        .questions {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .start-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 11px 15px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            transition: background 0.2s ease;
+        }
+
+        .start-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 55px;
+            padding: 22px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .sets {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .header p {
+                font-size: 15px;
+            }
+
+            .sets {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>SSC Online Practice Test</h1>
+        <p>Current Affairs Practice Sets</p>
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <div class="title">
+            <h2>Choose Your Practice Set</h2>
+            <p>Each practice set contains 100 questions</p>
+        </div>
+
+
+        <div class="sets">
+
+            <!-- Practice Set 1 -->
+            <div class="set-card">
+                <div class="icon">01</div>
+
+                <h3>Practice Set 1</h3>
+
+                <p class="questions">
+                    100 Questions
+                </p>
+
+                <a href="practiceset1.html" class="start-btn">
+                    Start Test
+                </a>
+            </div>
+
+
+            <!-- Practice Set 2 -->
+            <div class="set-card">
+                <div class="icon">02</div>
+
+                <h3>Practice Set 2</h3>
+
+                <p class="questions">
+                    100 Questions
+                </p>
+
+                <a href="practiceset2.html" class="start-btn">
+                    Start Test
+                </a>
+            </div>
+
+
+            <!-- Practice Set 3 -->
+            <div class="set-card">
+                <div class="icon">03</div>
+
+                <h3>Practice Set 3</h3>
+
+                <p class="questions">
+                    100 Questions
+                </p>
+
+                <a href="practiceset3.html" class="start-btn">
+                    Start Test
+                </a>
+            </div>
+
+
+            <!-- Practice Set 4 -->
+            <div class="set-card">
+                <div class="icon">04</div>
+
+                <h3>Practice Set 4</h3>
+
+                <p class="questions">
+                    100 Questions
+                </p>
+
+                <a href="practiceset4.html" class="start-btn">
+                    Start Test
+                </a>
+            </div>
+
+
+            <!-- Practice Set 5 -->
+            <div class="set-card">
+                <div class="icon">05</div>
+
+                <h3>Practice Set 5</h3>
+
+                <p class="questions">
+                    100 Questions
+                </p>
+
+                <a href="practiceset5.html" class="start-btn">
+                    Start Test
+                </a>
+            </div>
+
+
+            <!-- Practice Set 6 -->
+            <div class="set-card">
+                <div class="icon">06</div>
+
+                <h3>Practice Set 6</h3>
+
+                <p class="questions">
+                    100 Questions
+                </p>
+
+                <a href="practiceset6.html" class="start-btn">
+                    Start Test
+                </a>
+            </div>
+
+
+            <!-- Practice Set 7 -->
+            <div class="set-card">
+                <div class="icon">07</div>
+
+                <h3>Practice Set 7</h3>
+
+                <p class="questions">
+                    100 Questions
+                </p>
+
+                <a href="practiceset7.html" class="start-btn">
+                    Start Test
+                </a>
+            </div>
+
+
+            <!-- Practice Set 8 -->
+            <div class="set-card">
+                <div class="icon">08</div>
+
+                <h3>Practice Set 8</h3>
+
+                <p class="questions">
+                    101 Questions
+                </p>
+
+                <a href="practiceset8.html" class="start-btn">
+                    Start Test
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        © 2026 SSC Online Practice Test <br>
+        © Created by <b>Gksingh Rajput</b>
+    </footer>
+
+</body>
+</html>
