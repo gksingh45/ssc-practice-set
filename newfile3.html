@@ -1,0 +1,2060 @@
+<!doctype html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      | महत्वपूर्ण नियुक्तियाँ एवं पदाधिकारी — 2025–26 SSC Current Affairs
+      Practice Test
+    </title>
+    <style>
+      :root {
+        --primary: #154360;
+        --secondary: #2980b9;
+        --accent: #e67e22;
+        --success: #27ae60;
+        --danger: #c0392b;
+        --warning: #f39c12;
+        --purple: #8e44ad;
+        --light: #f4f6f9;
+        --border: #dcdde1;
+        --dark: #2c3e50;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Top Bar & Header */
+      header {
+        background-color: var(--primary);
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .brand-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .brand-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
+
+      .buy-book-btn {
+        background-color: #f39c12;
+        color: #fff;
+        text-decoration: none;
+        padding: 6px 14px;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 0.85rem;
+        transition: background 0.2s ease;
+        display: inline-block;
+      }
+
+      .buy-book-btn:hover {
+        background-color: #d68910;
+      }
+
+      .system-info {
+        font-size: 0.9rem;
+        text-align: right;
+      }
+
+      /* Layout Wrapper */
+      .quiz-container {
+        display: flex;
+        flex: 1;
+        height: calc(100vh - 58px);
+        overflow: hidden;
+      }
+
+      /* Main Area: Question & Controls */
+      .test-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        padding: 20px;
+        background: #fff;
+      }
+
+      .question-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid var(--border);
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+      }
+
+      .q-number {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .marking-scheme {
+        font-size: 0.85rem;
+        background: #e8f4f8;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-weight: 600;
+      }
+
+      .q-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .options-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .option-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+        background: #fafafa;
+      }
+
+      .option-item:hover:not(.disabled) {
+        background: #edf2f7;
+        border-color: var(--secondary);
+      }
+
+      .option-item.selected {
+        border-color: var(--secondary);
+        background: #ebf5fb;
+      }
+
+      /* Instant Feedback Highlights */
+      .option-item.correct {
+        background-color: #d4edda !important;
+        border-color: #28a745 !important;
+        color: #155724 !important;
+        font-weight: 600;
+      }
+
+      .option-item.incorrect {
+        background-color: #f8d7da !important;
+        border-color: #dc3545 !important;
+        color: #721c24 !important;
+        font-weight: 600;
+      }
+
+      .option-item.disabled {
+        cursor: default;
+      }
+
+      /* Explanation Box */
+      .explanation-box {
+        margin-top: 15px;
+        padding: 16px;
+        background-color: #fcf3cf;
+        border-left: 5px solid var(--warning);
+        border-radius: 4px;
+        display: none;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+
+      .explanation-box.active {
+        display: block;
+      }
+
+      .explanation-title {
+        font-weight: 700;
+        color: #7d6608;
+        margin-bottom: 6px;
+        font-size: 0.95rem;
+      }
+
+      .explanation-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #514205;
+      }
+
+      /* Control Buttons Panel */
+      .control-actions {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid var(--border);
+        padding-top: 16px;
+        margin-top: auto;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-prev,
+      .btn-next {
+        background-color: var(--secondary);
+        color: #fff;
+      }
+
+      .btn-prev:hover,
+      .btn-next:hover {
+        background-color: #1f618d;
+      }
+
+      .btn-review {
+        background-color: var(--purple);
+        color: #fff;
+      }
+
+      .btn-review:hover {
+        background-color: #71368a;
+      }
+
+      .btn-clear {
+        background-color: #e2e8f0;
+        color: var(--dark);
+        border-color: #cbd5e1;
+      }
+
+      .btn-clear:hover {
+        background-color: #cbd5e1;
+      }
+
+      .btn-submit {
+        background-color: var(--success);
+        color: #fff;
+      }
+
+      .btn-submit:hover {
+        background-color: #219653;
+      }
+
+      /* Sidebar: Question Palette */
+      .palette-sidebar {
+        width: 320px;
+        background: #f8fafc;
+        border-left: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .palette-legend {
+        padding: 12px;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        font-size: 0.75rem;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .badge {
+        width: 22px;
+        height: 22px;
+        border-radius: 3px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #fff;
+        font-size: 0.75rem;
+      }
+
+      .badge.not-visited {
+        background: #95a5a6;
+      }
+      .badge.answered {
+        background: var(--success);
+      }
+      .badge.review {
+        background: var(--purple);
+      }
+      .badge.review-answered {
+        background: var(--purple);
+        border: 2px solid #27ae60;
+      }
+      .badge.not-answered {
+        background: var(--danger);
+      }
+
+      .palette-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 15px;
+      }
+
+      .palette-title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .grid-palette {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+      }
+
+      .pal-btn {
+        width: 100%;
+        aspect-ratio: 1;
+        border: 1px solid #bdc3c7;
+        border-radius: 4px;
+        background: #95a5a6;
+        color: #fff;
+        font-weight: bold;
+        font-size: 0.85rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.1s;
+      }
+
+      .pal-btn:active {
+        transform: scale(0.95);
+      }
+
+      .pal-btn.active-q {
+        outline: 2px solid #000;
+        outline-offset: 2px;
+      }
+
+      .pal-btn.not-visited {
+        background: #95a5a6;
+      }
+      .pal-btn.not-answered {
+        background: var(--danger);
+      }
+      .pal-btn.answered {
+        background: var(--success);
+      }
+      .pal-btn.review {
+        background: var(--purple);
+      }
+      .pal-btn.review-answered {
+        background: var(--purple);
+        box-shadow: inset 0 0 0 3px #2ecc71;
+      }
+
+      /* Modal Styles for Result View */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        padding: 15px;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal-card {
+        background: #fff;
+        width: 100%;
+        max-width: 600px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        animation: zoomIn 0.25s ease;
+      }
+
+      .modal-header {
+        background: var(--primary);
+        color: #fff;
+        padding: 16px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .modal-body {
+        padding: 20px;
+      }
+
+      .score-summary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .score-card {
+        background: #f8fafc;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 14px;
+        text-align: center;
+      }
+
+      .score-card-label {
+        font-size: 0.85rem;
+        color: #64748b;
+        margin-bottom: 4px;
+      }
+
+      .score-card-val {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--primary);
+      }
+
+      .modal-footer {
+        display: flex;
+        justify-content: center;
+        padding: 15px;
+        background: #f1f5f9;
+        gap: 10px;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 860px) {
+        .quiz-container {
+          flex-direction: column;
+          height: auto;
+          overflow: visible;
+        }
+        .test-area {
+          height: auto;
+        }
+        .palette-sidebar {
+          width: 100%;
+          border-left: none;
+          border-top: 2px solid var(--border);
+          height: auto;
+        }
+        .grid-palette {
+          grid-template-columns: repeat(10, 1fr);
+        }
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+        .system-info {
+          text-align: left;
+        }
+      }
+
+      /* ===== Professional SSC Current Affairs Theme ===== */
+      :root {
+        --primary: #0b3d91;
+        --secondary: #1769d1;
+        --accent: #f4b400;
+        --success: #18864b;
+        --danger: #c62828;
+        --warning: #f4b400;
+        --purple: #5b4bb7;
+        --light: #eef3f8;
+        --border: #d7dee8;
+        --dark: #172033;
+      }
+
+      body {
+        background: #eef3f8;
+        color: #172033;
+      }
+
+      header {
+        background: linear-gradient(
+          135deg,
+          #082b6f 0%,
+          #0b3d91 55%,
+          #1769d1 100%
+        );
+        min-height: 68px;
+        padding: 11px 24px;
+        border-bottom: 3px solid #f4b400;
+        box-shadow: 0 3px 12px rgba(0, 32, 90, 0.18);
+      }
+
+      .brand-section {
+        gap: 14px;
+      }
+      .brand-title {
+        font-size: 1.15rem;
+        letter-spacing: 0.7px;
+      }
+
+      .buy-book-btn {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 20px;
+        padding: 7px 13px;
+      }
+      .buy-book-btn:hover {
+        background: rgba(255, 255, 255, 0.22);
+      }
+
+      .system-info {
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+      .system-info small {
+        display: inline-block;
+        margin-top: 3px;
+        font-size: 0.76rem;
+        font-weight: 500;
+      }
+
+      .quiz-container {
+        height: calc(100vh - 68px);
+        gap: 0;
+      }
+
+      .test-area {
+        padding: 24px 28px 20px;
+        background: #f8fafc;
+      }
+
+      /* change heading in this section....................................................  */
+      .test-area::before {
+        content: "महत्वपूर्ण नियुक्तियाँ एवं पदाधिकारी — 2025–26";
+        display: block;
+        width: fit-content;
+        max-width: 100%;
+        margin-bottom: 18px;
+        padding: 7px 14px;
+        border-radius: 6px;
+        background: #e7f0ff;
+        color: #0b3d91;
+        border: 1px solid #c9dcfb;
+        font-size: 0.88rem;
+        font-weight: 800;
+      }
+
+      .question-header {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--secondary);
+        border-bottom-width: 1px;
+        border-radius: 8px;
+        padding: 12px 15px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 8px rgba(15, 35, 70, 0.05);
+      }
+
+      .q-number {
+        color: #0b3d91;
+        font-size: 1.05rem;
+      }
+      .marking-scheme {
+        background: #fff7df;
+        color: #7b5a00;
+        border: 1px solid #f0d88b;
+        border-radius: 5px;
+      }
+
+      .q-text {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 18px 19px;
+        font-size: 1.12rem;
+        line-height: 1.75;
+        box-shadow: 0 2px 8px rgba(15, 35, 70, 0.04);
+      }
+
+      .option-item {
+        background: #fff;
+        border: 1px solid #cfd8e3;
+        border-radius: 8px;
+        padding: 13px 16px;
+        box-shadow: 0 1px 3px rgba(15, 35, 70, 0.03);
+      }
+      .option-item:hover:not(.disabled) {
+        background: #f2f7ff;
+        border-color: #1769d1;
+        transform: translateX(2px);
+      }
+      .option-item.selected {
+        background: #eaf2ff;
+        border-color: #1769d1;
+        box-shadow: 0 0 0 2px rgba(23, 105, 209, 0.08);
+      }
+
+      .palette-sidebar {
+        background: #fff;
+        border-left: 1px solid #cfd8e3;
+        box-shadow: -3px 0 12px rgba(15, 35, 70, 0.05);
+      }
+
+      .palette-title {
+        background: #0b3d91 !important;
+        color: #fff !important;
+        border-radius: 5px;
+        font-weight: 800;
+      }
+
+      .explanation-box {
+        background: #fff9e8;
+        border: 1px solid #f0d88b;
+        border-left: 5px solid #f4b400;
+        border-radius: 8px;
+      }
+
+      .control-actions {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 12px;
+        margin-top: 18px;
+        box-shadow: 0 2px 8px rgba(15, 35, 70, 0.04);
+      }
+
+      .btn {
+        border-radius: 6px;
+        font-weight: 700;
+      }
+
+      @media (max-width: 800px) {
+        header {
+          padding: 10px 14px;
+        }
+        .brand-title {
+          font-size: 0.98rem;
+        }
+        .system-info {
+          display: none;
+        }
+        .quiz-container {
+          height: auto;
+          overflow: visible;
+        }
+        .test-area {
+          padding: 16px 12px;
+        }
+        .test-area::before {
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Navigation Header -->
+    <header>
+      <div class="brand-section">
+        <div class="brand-title" id="uiBrandName">SSC ONLINE PRACTICE TEST</div>
+        <a href="#" target="_blank" class="buy-book-btn" id="uiBuyBookBtn"
+          >📚 BUY LATEST EDITION SPEEDY BOOK</a
+        >
+      </div>
+      <div class="system-info">
+        <div>महत्वपूर्ण नियुक्तियाँ एवं पदाधिकारी — 2025–26</div>
+        <small style="color: #cbd5e1"
+          >| Important One-Liner Current Affairs</small
+        >
+      </div>
+    </header>
+
+    <!-- Main Split Layout -->
+    <div class="quiz-container">
+      <!-- Question Area -->
+      <main class="test-area">
+        <div class="question-header">
+          <div class="q-number" id="qNumberDisplay">Question No. 1</div>
+          <div class="marking-scheme">Marks: +1 | Negative: 0</div>
+        </div>
+
+        <div class="q-text" id="qTextDisplay">प्रश्न लोड हो रहा है...</div>
+
+        <div class="options-list" id="optionsContainer">
+          <!-- Options rendered dynamically -->
+        </div>
+
+        <!-- Instant Feedback Explanation -->
+        <div class="explanation-box" id="explanationBox">
+          <div class="explanation-title">💡 सही उत्तर एवं व्याख्या:</div>
+          <div class="explanation-text" id="explanationText"></div>
+        </div>
+
+        <!-- Footer Buttons -->
+        <div class="control-actions">
+          <div class="btn-group">
+            <button class="btn btn-review" id="btnReview">
+              Mark for Review
+            </button>
+            <button class="btn btn-clear" id="btnClear">Clear Response</button>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-prev" id="btnPrev">Previous</button>
+            <button class="btn btn-next" id="btnNext">Save & Next</button>
+            <button class="btn btn-submit" id="btnSubmit">Submit Exam</button>
+          </div>
+        </div>
+      </main>
+
+      <!-- Question Palette Sidebar -->
+      <aside class="palette-sidebar">
+        <div class="palette-legend">
+          <div class="legend-item">
+            <span class="badge not-visited"></span> Not Visited
+          </div>
+          <div class="legend-item">
+            <span class="badge not-answered"></span> Not Answered
+          </div>
+          <div class="legend-item">
+            <span class="badge answered"></span> Answered
+          </div>
+          <div class="legend-item">
+            <span class="badge review"></span> Marked for Review
+          </div>
+        </div>
+        <div class="palette-body">
+          <div class="palette-title">Question Palette</div>
+          <div class="grid-palette" id="paletteGrid">
+            <!-- Palette buttons generated dynamically -->
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Score Summary Modal -->
+    <div class="modal-overlay" id="resultModal">
+      <div class="modal-card">
+        <div class="modal-header">Exam Performance Report</div>
+        <div class="modal-body">
+          <div class="score-summary-grid">
+            <div class="score-card">
+              <div class="score-card-label">Total Questions</div>
+              <div class="score-card-val" id="resTotal">64</div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Total Score</div>
+              <div class="score-card-val" id="resScore">0</div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Correct Answers</div>
+              <div
+                class="score-card-val"
+                style="color: var(--success)"
+                id="resCorrect"
+              >
+                0
+              </div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Incorrect Answers</div>
+              <div
+                class="score-card-val"
+                style="color: var(--danger)"
+                id="resIncorrect"
+              >
+                0
+              </div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Attempted Questions</div>
+              <div class="score-card-val" id="resAttempted">0</div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Percentage Score</div>
+              <div class="score-card-val" id="resPercentage">0%</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-next" onclick="closeModalAndReview()">
+            Review Questions
+          </button>
+          <button class="btn btn-clear" onclick="resetQuizData()">
+            Retake Test
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* ==========================================================================
+                   CONFIGURABLE BRANDING & LINKS
+                   ========================================================================== */
+      const APP_CONFIG = {
+        brandName: "SPEEDY PUBLICATION",
+        buyBookUrl: "https://amzn.in/d/0hwIeqas",
+        marking: {
+          correct: 1,
+          incorrect: 0,
+        },
+        storageKey: "speedy_quiz_sep2026_79_state_v2",
+      };
+
+      /* ==========================================================================
+                   ALL QUESTIONS WITH RANDOM CORRECT ANSWERS & DETAILED EXPLANATIONS
+                   ========================================================================== */
+      const questionsData = [
+        {
+          id: 1,
+          question: "न्यायमूर्ति सूर्यकांत किस पद पर हैं?",
+          options: [
+            "मुख्य न्यायाधीश, सर्वोच्च न्यायालय",
+            "महान्यायवादी (अटॉर्नी जनरल ऑफ इंडिया)",
+            "सॉलिसिटर जनरल ऑफ इंडिया",
+            "अध्यक्ष, राष्ट्रीय हरित न्यायाधिकरण",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: मुख्य न्यायाधीश, सर्वोच्च न्यायालय",
+        },
+        {
+          id: 2,
+          question: "आर. वेंकटरमणि किस पद पर हैं?",
+          options: [
+            "मुख्य न्यायाधीश, सर्वोच्च न्यायालय",
+            "महान्यायवादी (अटॉर्नी जनरल ऑफ इंडिया)",
+            "सॉलिसिटर जनरल ऑफ इंडिया",
+            "अध्यक्ष, राष्ट्रीय हरित न्यायाधिकरण",
+          ],
+          correct: 1,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: महान्यायवादी (अटॉर्नी जनरल ऑफ इंडिया)",
+        },
+        {
+          id: 3,
+          question: "तुषार मेहता किस पद पर हैं?",
+          options: [
+            "महान्यायवादी (अटॉर्नी जनरल ऑफ इंडिया)",
+            "मुख्य न्यायाधीश, सर्वोच्च न्यायालय",
+            "सॉलिसिटर जनरल ऑफ इंडिया",
+            "अध्यक्ष, राष्ट्रीय हरित न्यायाधिकरण",
+          ],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: सॉलिसिटर जनरल ऑफ इंडिया",
+        },
+        {
+          id: 4,
+          question: "न्यायमूर्ति प्रकाश श्रीवास्तव किस पद पर हैं?",
+          options: [
+            "सॉलिसिटर जनरल ऑफ इंडिया",
+            "मुख्य न्यायाधीश, सर्वोच्च न्यायालय",
+            "महान्यायवादी (अटॉर्नी जनरल ऑफ इंडिया)",
+            "अध्यक्ष, राष्ट्रीय हरित न्यायाधिकरण",
+          ],
+          correct: 3,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, राष्ट्रीय हरित न्यायाधिकरण",
+        },
+        {
+          id: 5,
+          question: "सी. पी. राधाकृष्णन किस पद पर हैं?",
+          options: [
+            "सभापति, राज्यसभा",
+            "उपसभापति, राज्यसभा",
+            "महासचिव, राज्यसभा",
+            "नेता विपक्ष, राज्यसभा",
+          ],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: सभापति, राज्यसभा",
+        },
+        {
+          id: 6,
+          question: "श्री हरिवंश किस पद पर हैं?",
+          options: [
+            "सभापति, राज्यसभा",
+            "उपसभापति, राज्यसभा",
+            "महासचिव, राज्यसभा",
+            "नेता विपक्ष, राज्यसभा",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: उपसभापति, राज्यसभा",
+        },
+        {
+          id: 7,
+          question: "प्रमोद चंद्र मोदी किस पद पर हैं?",
+          options: [
+            "उपसभापति, राज्यसभा",
+            "सभापति, राज्यसभा",
+            "महासचिव, राज्यसभा",
+            "नेता विपक्ष, राज्यसभा",
+          ],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: महासचिव, राज्यसभा",
+        },
+        {
+          id: 8,
+          question: "मल्लिकार्जुन खड़गे किस पद पर हैं?",
+          options: [
+            "महासचिव, राज्यसभा",
+            "सभापति, राज्यसभा",
+            "उपसभापति, राज्यसभा",
+            "नेता विपक्ष, राज्यसभा",
+          ],
+          correct: 3,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: नेता विपक्ष, राज्यसभा",
+        },
+        {
+          id: 9,
+          question: "जेपी नड्डा किस पद पर हैं?",
+          options: [
+            "नेता सत्तापक्ष, राज्यसभा",
+            "सभापति, राज्यसभा",
+            "उपसभापति, राज्यसभा",
+            "महासचिव, राज्यसभा",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: नेता सत्तापक्ष, राज्यसभा",
+        },
+        {
+          id: 10,
+          question: "ओम बिरला किस पद पर हैं?",
+          options: [
+            "सभापति, राज्यसभा",
+            "अध्यक्ष, 18वीं लोकसभा",
+            "उपसभापति, राज्यसभा",
+            "महासचिव, राज्यसभा",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, 18वीं लोकसभा",
+        },
+        {
+          id: 11,
+          question: "राहुल गांधी किस पद पर हैं?",
+          options: [
+            "उपसभापति, राज्यसभा",
+            "सभापति, राज्यसभा",
+            "नेता विपक्ष, लोकसभा",
+            "महासचिव, राज्यसभा",
+          ],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: नेता विपक्ष, लोकसभा",
+        },
+        {
+          id: 12,
+          question: "उत्पल कुमार सिंह किस पद पर हैं?",
+          options: [
+            "महासचिव, राज्यसभा",
+            "सभापति, राज्यसभा",
+            "उपसभापति, राज्यसभा",
+            "महासचिव, लोकसभा",
+          ],
+          correct: 3,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: महासचिव, लोकसभा",
+        },
+        {
+          id: 13,
+          question: "ज्ञानेश कुमार किस पद पर हैं?",
+          options: [
+            "मुख्य चुनाव आयुक्त",
+            "चुनाव आयुक्त",
+            "नियंत्रक एवं महालेखा परीक्षक (CAG)",
+            "महालेखा महानियंत्रक (CGA)",
+          ],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: मुख्य चुनाव आयुक्त",
+        },
+        {
+          id: 14,
+          question: "विवेक जोशी किस पद पर हैं?",
+          options: [
+            "मुख्य चुनाव आयुक्त",
+            "चुनाव आयुक्त",
+            "नियंत्रक एवं महालेखा परीक्षक (CAG)",
+            "महालेखा महानियंत्रक (CGA)",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: चुनाव आयुक्त",
+        },
+        {
+          id: 15,
+          question: "संजय मूर्ति किस पद पर हैं?",
+          options: [
+            "चुनाव आयुक्त",
+            "मुख्य चुनाव आयुक्त",
+            "नियंत्रक एवं महालेखा परीक्षक (CAG)",
+            "महालेखा महानियंत्रक (CGA)",
+          ],
+          correct: 2,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: नियंत्रक एवं महालेखा परीक्षक (CAG)",
+        },
+        {
+          id: 16,
+          question: "दीप्ति कल्याणी किस पद पर हैं?",
+          options: [
+            "नियंत्रक एवं महालेखा परीक्षक (CAG)",
+            "मुख्य चुनाव आयुक्त",
+            "चुनाव आयुक्त",
+            "महालेखा महानियंत्रक (CGA)",
+          ],
+          correct: 3,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: महालेखा महानियंत्रक (CGA)",
+        },
+        {
+          id: 17,
+          question: "अमरप्रीत सिंह किस पद पर हैं?",
+          options: [
+            "वायु सेनाध्यक्ष",
+            "नौ सेनाध्यक्ष",
+            "थल सेनाध्यक्ष",
+            "चीफ ऑफ डिफेंस स्टाफ (CDS)",
+          ],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: वायु सेनाध्यक्ष",
+        },
+        {
+          id: 18,
+          question: "कृष्णा स्वामीनाथन किस पद पर हैं?",
+          options: [
+            "वायु सेनाध्यक्ष",
+            "नौ सेनाध्यक्ष",
+            "थल सेनाध्यक्ष",
+            "चीफ ऑफ डिफेंस स्टाफ (CDS)",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: नौ सेनाध्यक्ष",
+        },
+        {
+          id: 19,
+          question: "धीरज सेठ किस पद पर हैं?",
+          options: [
+            "नौ सेनाध्यक्ष",
+            "वायु सेनाध्यक्ष",
+            "थल सेनाध्यक्ष",
+            "चीफ ऑफ डिफेंस स्टाफ (CDS)",
+          ],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: थल सेनाध्यक्ष",
+        },
+        {
+          id: 20,
+          question: "ले. ज. एन. एस. राजा सुब्रमणि किस पद पर हैं?",
+          options: [
+            "थल सेनाध्यक्ष",
+            "वायु सेनाध्यक्ष",
+            "नौ सेनाध्यक्ष",
+            "चीफ ऑफ डिफेंस स्टाफ (CDS)",
+          ],
+          correct: 3,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: चीफ ऑफ डिफेंस स्टाफ (CDS)",
+        },
+        {
+          id: 21,
+          question: "टी. वी. सोमनाथन किस पद पर हैं?",
+          options: [
+            "कैबिनेट सचिव",
+            "प्रधान सचिव, प्रधानमंत्री",
+            "निजी सचिव, प्रधानमंत्री",
+            "विदेश सचिव",
+          ],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: कैबिनेट सचिव",
+        },
+        {
+          id: 22,
+          question: "प्रमोद कुमार मिश्रा किस पद पर हैं?",
+          options: [
+            "कैबिनेट सचिव",
+            "प्रधान सचिव, प्रधानमंत्री",
+            "निजी सचिव, प्रधानमंत्री",
+            "विदेश सचिव",
+          ],
+          correct: 1,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: प्रधान सचिव, प्रधानमंत्री",
+        },
+        {
+          id: 23,
+          question: "निधि तिवारी किस पद पर हैं?",
+          options: [
+            "प्रधान सचिव, प्रधानमंत्री",
+            "कैबिनेट सचिव",
+            "निजी सचिव, प्रधानमंत्री",
+            "विदेश सचिव",
+          ],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: निजी सचिव, प्रधानमंत्री",
+        },
+        {
+          id: 24,
+          question: "विक्रम मिश्री किस पद पर हैं?",
+          options: [
+            "निजी सचिव, प्रधानमंत्री",
+            "कैबिनेट सचिव",
+            "प्रधान सचिव, प्रधानमंत्री",
+            "विदेश सचिव",
+          ],
+          correct: 3,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: विदेश सचिव",
+        },
+        {
+          id: 25,
+          question: "गोविंद मोहन किस पद पर हैं?",
+          options: [
+            "गृह सचिव",
+            "कैबिनेट सचिव",
+            "प्रधान सचिव, प्रधानमंत्री",
+            "निजी सचिव, प्रधानमंत्री",
+          ],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: गृह सचिव",
+        },
+        {
+          id: 26,
+          question: "अरविंद श्रीवास्तव किस पद पर हैं?",
+          options: [
+            "राष्ट्रीय सुरक्षा सलाहकार",
+            "राजस्व सचिव",
+            "उप राष्ट्रीय सुरक्षा सलाहकार",
+            "मुख्य आर्थिक सलाहकार",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: राजस्व सचिव",
+        },
+        {
+          id: 27,
+          question: "अजीत डोभाल किस पद पर हैं?",
+          options: [
+            "उप राष्ट्रीय सुरक्षा सलाहकार",
+            "राजस्व सचिव",
+            "राष्ट्रीय सुरक्षा सलाहकार",
+            "मुख्य आर्थिक सलाहकार",
+          ],
+          correct: 2,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: राष्ट्रीय सुरक्षा सलाहकार",
+        },
+        {
+          id: 28,
+          question: "अनीश दयाल सिंह किस पद पर हैं?",
+          options: [
+            "मुख्य आर्थिक सलाहकार",
+            "राजस्व सचिव",
+            "राष्ट्रीय सुरक्षा सलाहकार",
+            "उप राष्ट्रीय सुरक्षा सलाहकार",
+          ],
+          correct: 3,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: उप राष्ट्रीय सुरक्षा सलाहकार",
+        },
+        {
+          id: 29,
+          question: "वी. अनंत नागेश्वरन किस पद पर हैं?",
+          options: [
+            "मुख्य आर्थिक सलाहकार",
+            "राजस्व सचिव",
+            "राष्ट्रीय सुरक्षा सलाहकार",
+            "उप राष्ट्रीय सुरक्षा सलाहकार",
+          ],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: मुख्य आर्थिक सलाहकार",
+        },
+        {
+          id: 30,
+          question: "अजय कुमार सूद किस पद पर हैं?",
+          options: [
+            "राजस्व सचिव",
+            "मुख्य वैज्ञानिक सलाहकार, भारत सरकार",
+            "राष्ट्रीय सुरक्षा सलाहकार",
+            "उप राष्ट्रीय सुरक्षा सलाहकार",
+          ],
+          correct: 1,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: मुख्य वैज्ञानिक सलाहकार, भारत सरकार",
+        },
+        {
+          id: 31,
+          question: "प्रवीण कुमार श्रीवास्तव किस पद पर हैं?",
+          options: [
+            "निदेशक, इंटेलिजेंस ब्यूरो (IB)",
+            "प्रमुख, केंद्रीय जाँच ब्यूरो (CBI)",
+            "केंद्रीय सतर्कता आयुक्त (CVC)",
+            "पहली महिला महानिदेशक, रेलवे सुरक्षा बल (RPF)",
+          ],
+          correct: 2,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: केंद्रीय सतर्कता आयुक्त (CVC)",
+        },
+        {
+          id: 32,
+          question: "प्रवीण सूद किस पद पर हैं?",
+          options: [
+            "पहली महिला महानिदेशक, रेलवे सुरक्षा बल (RPF)",
+            "केंद्रीय सतर्कता आयुक्त (CVC)",
+            "निदेशक, इंटेलिजेंस ब्यूरो (IB)",
+            "प्रमुख, केंद्रीय जाँच ब्यूरो (CBI)",
+          ],
+          correct: 3,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: प्रमुख, केंद्रीय जाँच ब्यूरो (CBI)",
+        },
+        {
+          id: 33,
+          question: "महेश दीक्षित किस पद पर हैं?",
+          options: [
+            "निदेशक, इंटेलिजेंस ब्यूरो (IB)",
+            "केंद्रीय सतर्कता आयुक्त (CVC)",
+            "प्रमुख, केंद्रीय जाँच ब्यूरो (CBI)",
+            "पहली महिला महानिदेशक, रेलवे सुरक्षा बल (RPF)",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: निदेशक, इंटेलिजेंस ब्यूरो (IB)",
+        },
+        {
+          id: 34,
+          question: "सोमाली मिश्रा किस पद पर हैं?",
+          options: [
+            "केंद्रीय सतर्कता आयुक्त (CVC)",
+            "पहली महिला महानिदेशक, रेलवे सुरक्षा बल (RPF)",
+            "प्रमुख, केंद्रीय जाँच ब्यूरो (CBI)",
+            "निदेशक, इंटेलिजेंस ब्यूरो (IB)",
+          ],
+          correct: 1,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: पहली महिला महानिदेशक, रेलवे सुरक्षा बल (RPF)",
+        },
+        {
+          id: 35,
+          question: "अरविंद पनगढ़िया किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, राष्ट्रीय अल्पसंख्यक आयोग",
+            "अध्यक्ष, राष्ट्रीय मानवाधिकार आयोग",
+            "अध्यक्ष, 16वाँ वित्त आयोग",
+            "अध्यक्ष, भारतीय प्रतिभूति एवं विनिमय बोर्ड (SEBI)",
+          ],
+          correct: 2,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, 16वाँ वित्त आयोग",
+        },
+        {
+          id: 36,
+          question: "बी. रामासुब्रमण्यम किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, भारतीय प्रतिभूति एवं विनिमय बोर्ड (SEBI)",
+            "अध्यक्ष, 16वाँ वित्त आयोग",
+            "अध्यक्ष, राष्ट्रीय अल्पसंख्यक आयोग",
+            "अध्यक्ष, राष्ट्रीय मानवाधिकार आयोग",
+          ],
+          correct: 3,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, राष्ट्रीय मानवाधिकार आयोग",
+        },
+        {
+          id: 37,
+          question: "हरजीत सिंह ग्रेवाल किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, राष्ट्रीय अल्पसंख्यक आयोग",
+            "अध्यक्ष, 16वाँ वित्त आयोग",
+            "अध्यक्ष, राष्ट्रीय मानवाधिकार आयोग",
+            "अध्यक्ष, भारतीय प्रतिभूति एवं विनिमय बोर्ड (SEBI)",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, राष्ट्रीय अल्पसंख्यक आयोग",
+        },
+        {
+          id: 38,
+          question: "तुहिन कांत पांडे किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, 16वाँ वित्त आयोग",
+            "अध्यक्ष, भारतीय प्रतिभूति एवं विनिमय बोर्ड (SEBI)",
+            "अध्यक्ष, राष्ट्रीय मानवाधिकार आयोग",
+            "अध्यक्ष, राष्ट्रीय अल्पसंख्यक आयोग",
+          ],
+          correct: 1,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, भारतीय प्रतिभूति एवं विनिमय बोर्ड (SEBI)",
+        },
+        {
+          id: 39,
+          question: "राशि शेखर वेंपती किस पद पर हैं?",
+          options: [
+            "सीईओ, भारतीय विशिष्ट पहचान प्राधिकरण (UIDAI)",
+            "अध्यक्ष, भारतीय दूरसंचार विनियामक प्राधिकरण (TRAI)",
+            "अध्यक्ष, केंद्रीय फिल्म प्रमाणन बोर्ड (CBFC)",
+            "अध्यक्ष, विश्वविद्यालय अनुदान आयोग (UGC)",
+          ],
+          correct: 2,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, केंद्रीय फिल्म प्रमाणन बोर्ड (CBFC)",
+        },
+        {
+          id: 40,
+          question: "अनिल कुमार लाहोटी किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, विश्वविद्यालय अनुदान आयोग (UGC)",
+            "अध्यक्ष, केंद्रीय फिल्म प्रमाणन बोर्ड (CBFC)",
+            "सीईओ, भारतीय विशिष्ट पहचान प्राधिकरण (UIDAI)",
+            "अध्यक्ष, भारतीय दूरसंचार विनियामक प्राधिकरण (TRAI)",
+          ],
+          correct: 3,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, भारतीय दूरसंचार विनियामक प्राधिकरण (TRAI)",
+        },
+        {
+          id: 41,
+          question: "सौरभ विजय किस पद पर हैं?",
+          options: [
+            "सीईओ, भारतीय विशिष्ट पहचान प्राधिकरण (UIDAI)",
+            "अध्यक्ष, केंद्रीय फिल्म प्रमाणन बोर्ड (CBFC)",
+            "अध्यक्ष, भारतीय दूरसंचार विनियामक प्राधिकरण (TRAI)",
+            "अध्यक्ष, विश्वविद्यालय अनुदान आयोग (UGC)",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: सीईओ, भारतीय विशिष्ट पहचान प्राधिकरण (UIDAI)",
+        },
+        {
+          id: 42,
+          question: "विनीत जोशी किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, केंद्रीय फिल्म प्रमाणन बोर्ड (CBFC)",
+            "अध्यक्ष, विश्वविद्यालय अनुदान आयोग (UGC)",
+            "अध्यक्ष, भारतीय दूरसंचार विनियामक प्राधिकरण (TRAI)",
+            "सीईओ, भारतीय विशिष्ट पहचान प्राधिकरण (UIDAI)",
+          ],
+          correct: 1,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, विश्वविद्यालय अनुदान आयोग (UGC)",
+        },
+        {
+          id: 43,
+          question: "प्रसून जोशी किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, भारतीय क्रिकेट कंट्रोल बोर्ड (BCCI)",
+            "अध्यक्ष, इसरो (ISRO)",
+            "अध्यक्ष, प्रसार भारती",
+            "अध्यक्ष, एशियाई क्रिकेट परिषद (ACC)",
+          ],
+          correct: 2,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, प्रसार भारती",
+        },
+        {
+          id: 44,
+          question: "वी. नारायणन किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, एशियाई क्रिकेट परिषद (ACC)",
+            "अध्यक्ष, प्रसार भारती",
+            "अध्यक्ष, भारतीय क्रिकेट कंट्रोल बोर्ड (BCCI)",
+            "अध्यक्ष, इसरो (ISRO)",
+          ],
+          correct: 3,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, इसरो (ISRO)",
+        },
+        {
+          id: 45,
+          question: "जय शाह किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "सीईओ, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "प्रथम स्वतंत्र महिला निदेशक, आईसीसी (ICC)",
+            "मुख्य कोच, भारतीय पुरुष क्रिकेट टीम",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+        },
+        {
+          id: 46,
+          question: "संजोग गुप्ता किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "सीईओ, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "प्रथम स्वतंत्र महिला निदेशक, आईसीसी (ICC)",
+            "मुख्य कोच, भारतीय पुरुष क्रिकेट टीम",
+          ],
+          correct: 1,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: सीईओ, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+        },
+        {
+          id: 47,
+          question: "इंदिरा नूई किस पद पर हैं?",
+          options: [
+            "सीईओ, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "अध्यक्ष, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "प्रथम स्वतंत्र महिला निदेशक, आईसीसी (ICC)",
+            "मुख्य कोच, भारतीय पुरुष क्रिकेट टीम",
+          ],
+          correct: 2,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: प्रथम स्वतंत्र महिला निदेशक, आईसीसी (ICC)",
+        },
+        {
+          id: 48,
+          question: "मिथुन मन्हास किस पद पर हैं?",
+          options: [
+            "प्रथम स्वतंत्र महिला निदेशक, आईसीसी (ICC)",
+            "अध्यक्ष, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "सीईओ, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "अध्यक्ष, भारतीय क्रिकेट कंट्रोल बोर्ड (BCCI)",
+          ],
+          correct: 3,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, भारतीय क्रिकेट कंट्रोल बोर्ड (BCCI)",
+        },
+        {
+          id: 49,
+          question: "गौतम गंभीर किस पद पर हैं?",
+          options: [
+            "मुख्य कोच, भारतीय पुरुष क्रिकेट टीम",
+            "अध्यक्ष, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "सीईओ, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "प्रथम स्वतंत्र महिला निदेशक, आईसीसी (ICC)",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: मुख्य कोच, भारतीय पुरुष क्रिकेट टीम",
+        },
+        {
+          id: 50,
+          question: "अमोल मजूमदार किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "मुख्य कोच, भारतीय महिला क्रिकेट टीम",
+            "सीईओ, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "प्रथम स्वतंत्र महिला निदेशक, आईसीसी (ICC)",
+          ],
+          correct: 1,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: मुख्य कोच, भारतीय महिला क्रिकेट टीम",
+        },
+        {
+          id: 51,
+          question: "मोहेसिन नकवी किस पद पर हैं?",
+          options: [
+            "सीईओ, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "अध्यक्ष, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "अध्यक्ष, एशियाई क्रिकेट परिषद (ACC)",
+            "प्रथम स्वतंत्र महिला निदेशक, आईसीसी (ICC)",
+          ],
+          correct: 2,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, एशियाई क्रिकेट परिषद (ACC)",
+        },
+        {
+          id: 52,
+          question: "पी. वी. सिंधु किस पद पर हैं?",
+          options: [
+            "प्रथम स्वतंत्र महिला निदेशक, आईसीसी (ICC)",
+            "अध्यक्ष, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "सीईओ, अंतरराष्ट्रीय क्रिकेट परिषद (ICC)",
+            "चेयरपर्सन, BWF एथलीट्स कमीशन",
+          ],
+          correct: 3,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: चेयरपर्सन, BWF एथलीट्स कमीशन",
+        },
+        {
+          id: 53,
+          question: "हेमंत बिस्वा सरमा किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, भारतीय बैडमिंटन संघ (BAI)",
+            "अध्यक्ष, भारतीय बीमा नियामक और विकास प्राधिकरण (IRDA)",
+            "महासचिव, फिक्की (FICCI)",
+            "अध्यक्ष, एसोचैम (ASSOCHAM)",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, भारतीय बैडमिंटन संघ (BAI)",
+        },
+        {
+          id: 54,
+          question: "स्जोर्ड मारिज्ने किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, भारतीय बीमा नियामक और विकास प्राधिकरण (IRDA)",
+            "कोच, भारतीय महिला हॉकी टीम",
+            "महासचिव, फिक्की (FICCI)",
+            "अध्यक्ष, एसोचैम (ASSOCHAM)",
+          ],
+          correct: 1,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: कोच, भारतीय महिला हॉकी टीम",
+        },
+        {
+          id: 55,
+          question: "अजय सेठ किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, एसोचैम (ASSOCHAM)",
+            "महासचिव, फिक्की (FICCI)",
+            "अध्यक्ष, भारतीय बीमा नियामक और विकास प्राधिकरण (IRDA)",
+            "अध्यक्ष, नास्कॉम (NASSCOM)",
+          ],
+          correct: 2,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, भारतीय बीमा नियामक और विकास प्राधिकरण (IRDA)",
+        },
+        {
+          id: 56,
+          question: "अनंत स्वरूप किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, नास्कॉम (NASSCOM)",
+            "अध्यक्ष, भारतीय बीमा नियामक और विकास प्राधिकरण (IRDA)",
+            "अध्यक्ष, एसोचैम (ASSOCHAM)",
+            "महासचिव, फिक्की (FICCI)",
+          ],
+          correct: 3,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: महासचिव, फिक्की (FICCI)",
+        },
+        {
+          id: 57,
+          question: "निर्मल कुमार मिंडा किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, एसोचैम (ASSOCHAM)",
+            "गवर्नर, भारतीय रिजर्व बैंक (RBI)",
+            "उप-गवर्नर, रिजर्व बैंक ऑफ इंडिया",
+            "अध्यक्ष, भारतीय स्टेट बैंक",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, एसोचैम (ASSOCHAM)",
+        },
+        {
+          id: 58,
+          question: "श्रीकांत वेलामकन्नी किस पद पर हैं?",
+          options: [
+            "गवर्नर, भारतीय रिजर्व बैंक (RBI)",
+            "अध्यक्ष, नास्कॉम (NASSCOM)",
+            "उप-गवर्नर, रिजर्व बैंक ऑफ इंडिया",
+            "अध्यक्ष, भारतीय स्टेट बैंक",
+          ],
+          correct: 1,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, नास्कॉम (NASSCOM)",
+        },
+        {
+          id: 59,
+          question: "संजय मल्होत्रा किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, भारतीय स्टेट बैंक",
+            "उप-गवर्नर, रिजर्व बैंक ऑफ इंडिया",
+            "गवर्नर, भारतीय रिजर्व बैंक (RBI)",
+            "पंजाब नेशनल बैंक",
+          ],
+          correct: 2,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: गवर्नर, भारतीय रिजर्व बैंक (RBI)",
+        },
+        {
+          id: 60,
+          question: "रोहित जैन किस पद पर हैं?",
+          options: [
+            "पंजाब नेशनल बैंक",
+            "गवर्नर, भारतीय रिजर्व बैंक (RBI)",
+            "अध्यक्ष, भारतीय स्टेट बैंक",
+            "उप-गवर्नर, रिजर्व बैंक ऑफ इंडिया",
+          ],
+          correct: 3,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: उप-गवर्नर, रिजर्व बैंक ऑफ इंडिया",
+        },
+        {
+          id: 61,
+          question: "चल्ला श्रीनिवासुलु सेट्टी किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, भारतीय स्टेट बैंक",
+            "अध्यक्ष, भारतीय बैंक संघ (IBA) + SBI",
+            "महासचिव, संयुक्त राष्ट्र संघ",
+            "अध्यक्ष, 81वाँ संयुक्त राष्ट्र महासभा सत्र",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, भारतीय स्टेट बैंक",
+        },
+        {
+          id: 62,
+          question: "अशोक चंद्र किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, भारतीय बैंक संघ (IBA) + SBI",
+            "पंजाब नेशनल बैंक",
+            "महासचिव, संयुक्त राष्ट्र संघ",
+            "अध्यक्ष, 81वाँ संयुक्त राष्ट्र महासभा सत्र",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: पंजाब नेशनल बैंक",
+        },
+        {
+          id: 63,
+          question: "चल्ला श्रीनिवासुलु सेट्टी किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, 81वाँ संयुक्त राष्ट्र महासभा सत्र",
+            "महासचिव, संयुक्त राष्ट्र संघ",
+            "अध्यक्ष, भारतीय बैंक संघ (IBA) + SBI",
+            "14वें अध्यक्ष, विश्व बैंक (IBRD)",
+          ],
+          correct: 2,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, भारतीय बैंक संघ (IBA) + SBI",
+        },
+        {
+          id: 64,
+          question: "एंटोनियो गुटेरेस किस पद पर हैं?",
+          options: [
+            "14वें अध्यक्ष, विश्व बैंक (IBRD)",
+            "अध्यक्ष, भारतीय बैंक संघ (IBA) + SBI",
+            "अध्यक्ष, 81वाँ संयुक्त राष्ट्र महासभा सत्र",
+            "महासचिव, संयुक्त राष्ट्र संघ",
+          ],
+          correct: 3,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: महासचिव, संयुक्त राष्ट्र संघ",
+        },
+        {
+          id: 65,
+          question: "खलीलुर रहमान किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, 81वाँ संयुक्त राष्ट्र महासभा सत्र",
+            "प्रबंध निदेशक, अंतरराष्ट्रीय मुद्रा कोष (IMF)",
+            "महानिदेशक, विश्व व्यापार संगठन (WTO)",
+            "प्रमुख, यूनिसेफ (UNICEF)",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, 81वाँ संयुक्त राष्ट्र महासभा सत्र",
+        },
+        {
+          id: 66,
+          question: "अजय बंगा किस पद पर हैं?",
+          options: [
+            "प्रबंध निदेशक, अंतरराष्ट्रीय मुद्रा कोष (IMF)",
+            "14वें अध्यक्ष, विश्व बैंक (IBRD)",
+            "महानिदेशक, विश्व व्यापार संगठन (WTO)",
+            "प्रमुख, यूनिसेफ (UNICEF)",
+          ],
+          correct: 1,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: 14वें अध्यक्ष, विश्व बैंक (IBRD)",
+        },
+        {
+          id: 67,
+          question: "क्रिस्टालिना जॉर्जीवा किस पद पर हैं?",
+          options: [
+            "प्रमुख, यूनिसेफ (UNICEF)",
+            "महानिदेशक, विश्व व्यापार संगठन (WTO)",
+            "प्रबंध निदेशक, अंतरराष्ट्रीय मुद्रा कोष (IMF)",
+            "महासचिव, दक्षेस (SAARC)",
+          ],
+          correct: 2,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: प्रबंध निदेशक, अंतरराष्ट्रीय मुद्रा कोष (IMF)",
+        },
+        {
+          id: 68,
+          question: "नगोजी ओकोंजो-इवेला किस पद पर हैं?",
+          options: [
+            "महासचिव, दक्षेस (SAARC)",
+            "प्रबंध निदेशक, अंतरराष्ट्रीय मुद्रा कोष (IMF)",
+            "प्रमुख, यूनिसेफ (UNICEF)",
+            "महानिदेशक, विश्व व्यापार संगठन (WTO)",
+          ],
+          correct: 3,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: महानिदेशक, विश्व व्यापार संगठन (WTO)",
+        },
+        {
+          id: 69,
+          question: "कैथरीन रसेल किस पद पर हैं?",
+          options: [
+            "प्रमुख, यूनिसेफ (UNICEF)",
+            "महासचिव, राष्ट्रमंडल (कॉमनवेल्थ)",
+            "अध्यक्ष, अफ्रीकी संघ (AU)",
+            "महासचिव, आसियान (ASEAN)",
+          ],
+          correct: 0,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: प्रमुख, यूनिसेफ (UNICEF)",
+        },
+        {
+          id: 70,
+          question: "मोहम्मद गुलाम सरवर किस पद पर हैं?",
+          options: [
+            "महासचिव, राष्ट्रमंडल (कॉमनवेल्थ)",
+            "महासचिव, दक्षेस (SAARC)",
+            "अध्यक्ष, अफ्रीकी संघ (AU)",
+            "महासचिव, आसियान (ASEAN)",
+          ],
+          correct: 1,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: महासचिव, दक्षेस (SAARC)",
+        },
+        {
+          id: 71,
+          question: "शर्ली बोचवे किस पद पर हैं?",
+          options: [
+            "महासचिव, आसियान (ASEAN)",
+            "अध्यक्ष, अफ्रीकी संघ (AU)",
+            "महासचिव, राष्ट्रमंडल (कॉमनवेल्थ)",
+            "अध्यक्ष, एशियाई विकास बैंक (ADB)",
+          ],
+          correct: 2,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: महासचिव, राष्ट्रमंडल (कॉमनवेल्थ)",
+        },
+        {
+          id: 72,
+          question: "एवेरिस्ट नदायिशिमिये किस पद पर हैं?",
+          options: [
+            "अध्यक्ष, एशियाई विकास बैंक (ADB)",
+            "महासचिव, राष्ट्रमंडल (कॉमनवेल्थ)",
+            "महासचिव, आसियान (ASEAN)",
+            "अध्यक्ष, अफ्रीकी संघ (AU)",
+          ],
+          correct: 3,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, अफ्रीकी संघ (AU)",
+        },
+        {
+          id: 73,
+          question: "डॉ. काओ किम हौर्न किस पद पर हैं?",
+          options: [
+            "महासचिव, आसियान (ASEAN)",
+            "अध्यक्ष, अफ्रीकी संघ (AU)",
+            "अध्यक्ष, एशियाई विकास बैंक (ADB)",
+            "महासचिव, राष्ट्रमंडल (कॉमनवेल्थ)",
+          ],
+          correct: 0,
+          explanation: "स्रोत PDF के अनुसार सही उत्तर: महासचिव, आसियान (ASEAN)",
+        },
+        {
+          id: 74,
+          question: "मासातो कांडा किस पद पर हैं?",
+          options: [
+            "महासचिव, आसियान (ASEAN)",
+            "अध्यक्ष, एशियाई विकास बैंक (ADB)",
+            "अध्यक्ष, अफ्रीकी संघ (AU)",
+            "महासचिव, राष्ट्रमंडल (कॉमनवेल्थ)",
+          ],
+          correct: 1,
+          explanation:
+            "स्रोत PDF के अनुसार सही उत्तर: अध्यक्ष, एशियाई विकास बैंक (ADB)",
+        },
+      ];
+
+      /* ==========================================================================
+                   QUIZ STATE MANAGEMENT
+                   ========================================================================== */
+      let currentIndex = 0;
+      // States: 'not-visited', 'not-answered', 'answered', 'review', 'review-answered'
+      let userState = {
+        answers: {}, // { qIndex: selectedOptionIndex }
+        status: {}, // { qIndex: 'status-string' }
+        isSubmitted: false,
+      };
+
+      // Load from LocalStorage if available
+      function loadSavedState() {
+        const saved = localStorage.getItem(APP_CONFIG.storageKey);
+        if (saved) {
+          try {
+            userState = JSON.parse(saved);
+          } catch (e) {
+            console.error("Could not parse saved quiz state", e);
+          }
+        }
+        // Initialize unvisited questions
+        questionsData.forEach((_, idx) => {
+          if (!userState.status[idx]) {
+            userState.status[idx] = "not-visited";
+          }
+        });
+      }
+
+      function persistState() {
+        localStorage.setItem(APP_CONFIG.storageKey, JSON.stringify(userState));
+      }
+
+      /* ==========================================================================
+                   UI RENDERING FUNCTIONS
+                   ========================================================================== */
+      function initializeUI() {
+        document.getElementById("uiBrandName").innerText = APP_CONFIG.brandName;
+        document.getElementById("uiBuyBookBtn").href = APP_CONFIG.buyBookUrl;
+
+        renderPaletteGrid();
+        loadQuestion(currentIndex);
+      }
+
+      function renderPaletteGrid() {
+        const grid = document.getElementById("paletteGrid");
+        grid.innerHTML = "";
+        questionsData.forEach((_, idx) => {
+          const btn = document.createElement("button");
+          btn.className = `pal-btn ${userState.status[idx] || "not-visited"}`;
+          btn.innerText = idx + 1;
+          btn.id = `pal-btn-${idx}`;
+          btn.onclick = () => navigateToQuestion(idx);
+          grid.appendChild(btn);
+        });
+      }
+
+      function updatePaletteButton(idx) {
+        const btn = document.getElementById(`pal-btn-${idx}`);
+        if (!btn) return;
+        btn.className = `pal-btn ${userState.status[idx]}`;
+        if (idx === currentIndex) {
+          btn.classList.add("active-q");
+        }
+      }
+
+      function loadQuestion(index) {
+        currentIndex = index;
+        const q = questionsData[index];
+
+        // If status is not-visited, mark as not-answered upon viewing
+        if (userState.status[index] === "not-visited") {
+          userState.status[index] = "not-answered";
+        }
+
+        // Update question text and headers
+        document.getElementById("qNumberDisplay").innerText =
+          `Question No. ${index + 1} of ${questionsData.length}`;
+        document.getElementById("qTextDisplay").innerText = q.question;
+
+        // Render Options
+        const optionsContainer = document.getElementById("optionsContainer");
+        optionsContainer.innerHTML = "";
+
+        const userChoice = userState.answers[index];
+        const hasAnswered = userChoice !== undefined;
+
+        q.options.forEach((opt, optIdx) => {
+          const optDiv = document.createElement("div");
+          optDiv.className = "option-item";
+          optDiv.innerHTML = `<strong>(${String.fromCharCode(65 + optIdx)})</strong>&nbsp;&nbsp;${opt}`;
+
+          if (hasAnswered) {
+            optDiv.classList.add("disabled");
+            // Highlight logic
+            if (optIdx === q.correct) {
+              optDiv.classList.add("correct");
+            }
+            if (optIdx === userChoice && userChoice !== q.correct) {
+              optDiv.classList.add("incorrect");
+            }
+            if (optIdx === userChoice) {
+              optDiv.classList.add("selected");
+            }
+          } else {
+            optDiv.onclick = () => selectOption(index, optIdx);
+          }
+
+          optionsContainer.appendChild(optDiv);
+        });
+
+        // Show/Hide Explanation
+        const expBox = document.getElementById("explanationBox");
+        const expText = document.getElementById("explanationText");
+        if (hasAnswered) {
+          expText.innerText = q.explanation;
+          expBox.classList.add("active");
+        } else {
+          expBox.classList.remove("active");
+        }
+
+        // Update Active Status on all palette buttons
+        questionsData.forEach((_, i) => {
+          const pBtn = document.getElementById(`pal-btn-${i}`);
+          if (pBtn) {
+            pBtn.classList.remove("active-q");
+            if (i === currentIndex) pBtn.classList.add("active-q");
+          }
+        });
+        updatePaletteButton(index);
+        persistState();
+      }
+
+      /* Option click handler with immediate feedback */
+      function selectOption(qIdx, selectedOptIdx) {
+        if (userState.answers[qIdx] !== undefined) return; // Prevent changing after instant submit
+
+        userState.answers[qIdx] = selectedOptIdx;
+
+        // Update status
+        if (userState.status[qIdx] === "review") {
+          userState.status[qIdx] = "review-answered";
+        } else {
+          userState.status[qIdx] = "answered";
+        }
+
+        loadQuestion(qIdx);
+      }
+
+      function navigateToQuestion(index) {
+        loadQuestion(index);
+      }
+
+      /* ==========================================================================
+                   CONTROL ACTIONS (BUTTONS)
+                   ========================================================================== */
+      document.getElementById("btnNext").onclick = () => {
+        if (currentIndex < questionsData.length - 1) {
+          loadQuestion(currentIndex + 1);
+        }
+      };
+
+      document.getElementById("btnPrev").onclick = () => {
+        if (currentIndex > 0) {
+          loadQuestion(currentIndex - 1);
+        }
+      };
+
+      document.getElementById("btnClear").onclick = () => {
+        if (userState.answers[currentIndex] !== undefined) {
+          delete userState.answers[currentIndex];
+          userState.status[currentIndex] = "not-answered";
+          loadQuestion(currentIndex);
+        }
+      };
+
+      document.getElementById("btnReview").onclick = () => {
+        const currentStat = userState.status[currentIndex];
+        if (userState.answers[currentIndex] !== undefined) {
+          userState.status[currentIndex] =
+            currentStat === "review-answered" ? "answered" : "review-answered";
+        } else {
+          userState.status[currentIndex] =
+            currentStat === "review" ? "not-answered" : "review";
+        }
+        updatePaletteButton(currentIndex);
+        persistState();
+      };
+
+      document.getElementById("btnSubmit").onclick = () => {
+        submitQuiz();
+      };
+
+      /* ==========================================================================
+                   SUBMIT & SCORE CALCULATION
+                   ========================================================================== */
+      function submitQuiz() {
+        let correctCount = 0;
+        let incorrectCount = 0;
+        let attemptedCount = 0;
+
+        questionsData.forEach((q, idx) => {
+          const ans = userState.answers[idx];
+          if (ans !== undefined) {
+            attemptedCount++;
+            if (ans === q.correct) {
+              correctCount++;
+            } else {
+              incorrectCount++;
+            }
+          }
+        });
+
+        const totalMarks = correctCount * APP_CONFIG.marking.correct;
+        const percentage = ((totalMarks / questionsData.length) * 100).toFixed(
+          2,
+        );
+
+        document.getElementById("resTotal").innerText = questionsData.length;
+        document.getElementById("resScore").innerText =
+          `${totalMarks} / ${questionsData.length}`;
+        document.getElementById("resCorrect").innerText = correctCount;
+        document.getElementById("resIncorrect").innerText = incorrectCount;
+        document.getElementById("resAttempted").innerText =
+          `${attemptedCount} (${questionsData.length - attemptedCount} Unattempted)`;
+        document.getElementById("resPercentage").innerText = `${percentage}%`;
+
+        document.getElementById("resultModal").classList.add("active");
+      }
+
+      function closeModalAndReview() {
+        document.getElementById("resultModal").classList.remove("active");
+      }
+
+      function resetQuizData() {
+        if (
+          confirm(
+            "क्या आप वाकई परीक्षा को दोबारा शुरू करना चाहते हैं? आपकी वर्तमान प्रगति मिटा दी जाएगी।",
+          )
+        ) {
+          localStorage.removeItem(APP_CONFIG.storageKey);
+          userState = { answers: {}, status: {}, isSubmitted: false };
+          loadSavedState();
+          renderPaletteGrid();
+          loadQuestion(0);
+          closeModalAndReview();
+        }
+      }
+
+      // Startup
+      window.onload = () => {
+        loadSavedState();
+        initializeUI();
+      };
+    </script>
+  </body>
+</html>
