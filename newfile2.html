@@ -1,0 +1,1199 @@
+<!doctype html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>| योजना, अभियान एवं मिशन : संबंधित राज्य/मंत्रालय SSC Current Affairs Practice Test</title>
+    <style>
+      :root {
+        --primary: #154360;
+        --secondary: #2980b9;
+        --accent: #e67e22;
+        --success: #27ae60;
+        --danger: #c0392b;
+        --warning: #f39c12;
+        --purple: #8e44ad;
+        --light: #f4f6f9;
+        --border: #dcdde1;
+        --dark: #2c3e50;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Top Bar & Header */
+      header {
+        background-color: var(--primary);
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .brand-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .brand-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
+
+      .buy-book-btn {
+        background-color: #f39c12;
+        color: #fff;
+        text-decoration: none;
+        padding: 6px 14px;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 0.85rem;
+        transition: background 0.2s ease;
+        display: inline-block;
+      }
+
+      .buy-book-btn:hover {
+        background-color: #d68910;
+      }
+
+      .system-info {
+        font-size: 0.9rem;
+        text-align: right;
+      }
+
+      /* Layout Wrapper */
+      .quiz-container {
+        display: flex;
+        flex: 1;
+        height: calc(100vh - 58px);
+        overflow: hidden;
+      }
+
+      /* Main Area: Question & Controls */
+      .test-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        padding: 20px;
+        background: #fff;
+      }
+
+      .question-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid var(--border);
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+      }
+
+      .q-number {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .marking-scheme {
+        font-size: 0.85rem;
+        background: #e8f4f8;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-weight: 600;
+      }
+
+      .q-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .options-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .option-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+        background: #fafafa;
+      }
+
+      .option-item:hover:not(.disabled) {
+        background: #edf2f7;
+        border-color: var(--secondary);
+      }
+
+      .option-item.selected {
+        border-color: var(--secondary);
+        background: #ebf5fb;
+      }
+
+      /* Instant Feedback Highlights */
+      .option-item.correct {
+        background-color: #d4edda !important;
+        border-color: #28a745 !important;
+        color: #155724 !important;
+        font-weight: 600;
+      }
+
+      .option-item.incorrect {
+        background-color: #f8d7da !important;
+        border-color: #dc3545 !important;
+        color: #721c24 !important;
+        font-weight: 600;
+      }
+
+      .option-item.disabled {
+        cursor: default;
+      }
+
+      /* Explanation Box */
+      .explanation-box {
+        margin-top: 15px;
+        padding: 16px;
+        background-color: #fcf3cf;
+        border-left: 5px solid var(--warning);
+        border-radius: 4px;
+        display: none;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+
+      .explanation-box.active {
+        display: block;
+      }
+
+      .explanation-title {
+        font-weight: 700;
+        color: #7d6608;
+        margin-bottom: 6px;
+        font-size: 0.95rem;
+      }
+
+      .explanation-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #514205;
+      }
+
+      /* Control Buttons Panel */
+      .control-actions {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid var(--border);
+        padding-top: 16px;
+        margin-top: auto;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-prev,
+      .btn-next {
+        background-color: var(--secondary);
+        color: #fff;
+      }
+
+      .btn-prev:hover,
+      .btn-next:hover {
+        background-color: #1f618d;
+      }
+
+      .btn-review {
+        background-color: var(--purple);
+        color: #fff;
+      }
+
+      .btn-review:hover {
+        background-color: #71368a;
+      }
+
+      .btn-clear {
+        background-color: #e2e8f0;
+        color: var(--dark);
+        border-color: #cbd5e1;
+      }
+
+      .btn-clear:hover {
+        background-color: #cbd5e1;
+      }
+
+      .btn-submit {
+        background-color: var(--success);
+        color: #fff;
+      }
+
+      .btn-submit:hover {
+        background-color: #219653;
+      }
+
+      /* Sidebar: Question Palette */
+      .palette-sidebar {
+        width: 320px;
+        background: #f8fafc;
+        border-left: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .palette-legend {
+        padding: 12px;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        font-size: 0.75rem;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .badge {
+        width: 22px;
+        height: 22px;
+        border-radius: 3px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #fff;
+        font-size: 0.75rem;
+      }
+
+      .badge.not-visited {
+        background: #95a5a6;
+      }
+      .badge.answered {
+        background: var(--success);
+      }
+      .badge.review {
+        background: var(--purple);
+      }
+      .badge.review-answered {
+        background: var(--purple);
+        border: 2px solid #27ae60;
+      }
+      .badge.not-answered {
+        background: var(--danger);
+      }
+
+      .palette-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 15px;
+      }
+
+      .palette-title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .grid-palette {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+      }
+
+      .pal-btn {
+        width: 100%;
+        aspect-ratio: 1;
+        border: 1px solid #bdc3c7;
+        border-radius: 4px;
+        background: #95a5a6;
+        color: #fff;
+        font-weight: bold;
+        font-size: 0.85rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.1s;
+      }
+
+      .pal-btn:active {
+        transform: scale(0.95);
+      }
+
+      .pal-btn.active-q {
+        outline: 2px solid #000;
+        outline-offset: 2px;
+      }
+
+      .pal-btn.not-visited {
+        background: #95a5a6;
+      }
+      .pal-btn.not-answered {
+        background: var(--danger);
+      }
+      .pal-btn.answered {
+        background: var(--success);
+      }
+      .pal-btn.review {
+        background: var(--purple);
+      }
+      .pal-btn.review-answered {
+        background: var(--purple);
+        box-shadow: inset 0 0 0 3px #2ecc71;
+      }
+
+      /* Modal Styles for Result View */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        padding: 15px;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal-card {
+        background: #fff;
+        width: 100%;
+        max-width: 600px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        animation: zoomIn 0.25s ease;
+      }
+
+      .modal-header {
+        background: var(--primary);
+        color: #fff;
+        padding: 16px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .modal-body {
+        padding: 20px;
+      }
+
+      .score-summary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .score-card {
+        background: #f8fafc;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 14px;
+        text-align: center;
+      }
+
+      .score-card-label {
+        font-size: 0.85rem;
+        color: #64748b;
+        margin-bottom: 4px;
+      }
+
+      .score-card-val {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--primary);
+      }
+
+      .modal-footer {
+        display: flex;
+        justify-content: center;
+        padding: 15px;
+        background: #f1f5f9;
+        gap: 10px;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 860px) {
+        .quiz-container {
+          flex-direction: column;
+          height: auto;
+          overflow: visible;
+        }
+        .test-area {
+          height: auto;
+        }
+        .palette-sidebar {
+          width: 100%;
+          border-left: none;
+          border-top: 2px solid var(--border);
+          height: auto;
+        }
+        .grid-palette {
+          grid-template-columns: repeat(10, 1fr);
+        }
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+        .system-info {
+          text-align: left;
+        }
+      }
+
+      /* ===== Professional SSC Current Affairs Theme ===== */
+      :root {
+        --primary: #0b3d91;
+        --secondary: #1769d1;
+        --accent: #f4b400;
+        --success: #18864b;
+        --danger: #c62828;
+        --warning: #f4b400;
+        --purple: #5b4bb7;
+        --light: #eef3f8;
+        --border: #d7dee8;
+        --dark: #172033;
+      }
+
+      body {
+        background: #eef3f8;
+        color: #172033;
+      }
+
+      header {
+        background: linear-gradient(
+          135deg,
+          #082b6f 0%,
+          #0b3d91 55%,
+          #1769d1 100%
+        );
+        min-height: 68px;
+        padding: 11px 24px;
+        border-bottom: 3px solid #f4b400;
+        box-shadow: 0 3px 12px rgba(0, 32, 90, 0.18);
+      }
+
+      .brand-section {
+        gap: 14px;
+      }
+      .brand-title {
+        font-size: 1.15rem;
+        letter-spacing: 0.7px;
+      }
+
+      .buy-book-btn {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 20px;
+        padding: 7px 13px;
+      }
+      .buy-book-btn:hover {
+        background: rgba(255, 255, 255, 0.22);
+      }
+
+      .system-info {
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+      .system-info small {
+        display: inline-block;
+        margin-top: 3px;
+        font-size: 0.76rem;
+        font-weight: 500;
+      }
+
+      .quiz-container {
+        height: calc(100vh - 68px);
+        gap: 0;
+      }
+
+      .test-area {
+        padding: 24px 28px 20px;
+        background: #f8fafc;
+      }
+
+      /* change heading in this section....................................................  */
+      .test-area::before {
+        content: "योजना, अभियान एवं मिशन : संबंधित राज्य/मंत्रालय 2"; 
+        display: block;
+        width: fit-content;
+        max-width: 100%;
+        margin-bottom: 18px;
+        padding: 7px 14px;
+        border-radius: 6px;
+        background: #e7f0ff;
+        color: #0b3d91;
+        border: 1px solid #c9dcfb;
+        font-size: 0.88rem;
+        font-weight: 800;
+      }
+
+      .question-header {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--secondary);
+        border-bottom-width: 1px;
+        border-radius: 8px;
+        padding: 12px 15px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 8px rgba(15, 35, 70, 0.05);
+      }
+
+      .q-number {
+        color: #0b3d91;
+        font-size: 1.05rem;
+      }
+      .marking-scheme {
+        background: #fff7df;
+        color: #7b5a00;
+        border: 1px solid #f0d88b;
+        border-radius: 5px;
+      }
+
+      .q-text {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 18px 19px;
+        font-size: 1.12rem;
+        line-height: 1.75;
+        box-shadow: 0 2px 8px rgba(15, 35, 70, 0.04);
+      }
+
+      .option-item {
+        background: #fff;
+        border: 1px solid #cfd8e3;
+        border-radius: 8px;
+        padding: 13px 16px;
+        box-shadow: 0 1px 3px rgba(15, 35, 70, 0.03);
+      }
+      .option-item:hover:not(.disabled) {
+        background: #f2f7ff;
+        border-color: #1769d1;
+        transform: translateX(2px);
+      }
+      .option-item.selected {
+        background: #eaf2ff;
+        border-color: #1769d1;
+        box-shadow: 0 0 0 2px rgba(23, 105, 209, 0.08);
+      }
+
+      .palette-sidebar {
+        background: #fff;
+        border-left: 1px solid #cfd8e3;
+        box-shadow: -3px 0 12px rgba(15, 35, 70, 0.05);
+      }
+
+      .palette-title {
+        background: #0b3d91 !important;
+        color: #fff !important;
+        border-radius: 5px;
+        font-weight: 800;
+      }
+
+      .explanation-box {
+        background: #fff9e8;
+        border: 1px solid #f0d88b;
+        border-left: 5px solid #f4b400;
+        border-radius: 8px;
+      }
+
+      .control-actions {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 12px;
+        margin-top: 18px;
+        box-shadow: 0 2px 8px rgba(15, 35, 70, 0.04);
+      }
+
+      .btn {
+        border-radius: 6px;
+        font-weight: 700;
+      }
+
+      @media (max-width: 800px) {
+        header {
+          padding: 10px 14px;
+        }
+        .brand-title {
+          font-size: 0.98rem;
+        }
+        .system-info {
+          display: none;
+        }
+        .quiz-container {
+          height: auto;
+          overflow: visible;
+        }
+        .test-area {
+          padding: 16px 12px;
+        }
+        .test-area::before {
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Navigation Header -->
+    <header>
+      <div class="brand-section">
+        <div class="brand-title" id="uiBrandName">SSC ONLINE PRACTICE TEST</div>
+        <a href="#" target="_blank" class="buy-book-btn" id="uiBuyBookBtn"
+          >📚 BUY LATEST EDITION SPEEDY BOOK</a
+        >
+      </div>
+      <div class="system-info">
+        <div> योजना, अभियान एवं मिशन : संबंधित राज्य/मंत्रालय 2</div>
+        <small style="color: #cbd5e1"
+          >| Important One-Liner Current Affairs</small
+        >
+      </div>
+    </header>
+
+    <!-- Main Split Layout -->
+    <div class="quiz-container">
+      <!-- Question Area -->
+      <main class="test-area">
+        <div class="question-header">
+          <div class="q-number" id="qNumberDisplay">Question No. 1</div>
+          <div class="marking-scheme">Marks: +1 | Negative: 0</div>
+        </div>
+
+        <div class="q-text" id="qTextDisplay">प्रश्न लोड हो रहा है...</div>
+
+        <div class="options-list" id="optionsContainer">
+          <!-- Options rendered dynamically -->
+        </div>
+
+        <!-- Instant Feedback Explanation -->
+        <div class="explanation-box" id="explanationBox">
+          <div class="explanation-title">💡 सही उत्तर एवं व्याख्या:</div>
+          <div class="explanation-text" id="explanationText"></div>
+        </div>
+
+        <!-- Footer Buttons -->
+        <div class="control-actions">
+          <div class="btn-group">
+            <button class="btn btn-review" id="btnReview">
+              Mark for Review
+            </button>
+            <button class="btn btn-clear" id="btnClear">Clear Response</button>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-prev" id="btnPrev">Previous</button>
+            <button class="btn btn-next" id="btnNext">Save & Next</button>
+            <button class="btn btn-submit" id="btnSubmit">Submit Exam</button>
+          </div>
+        </div>
+      </main>
+
+      <!-- Question Palette Sidebar -->
+      <aside class="palette-sidebar">
+        <div class="palette-legend">
+          <div class="legend-item">
+            <span class="badge not-visited"></span> Not Visited
+          </div>
+          <div class="legend-item">
+            <span class="badge not-answered"></span> Not Answered
+          </div>
+          <div class="legend-item">
+            <span class="badge answered"></span> Answered
+          </div>
+          <div class="legend-item">
+            <span class="badge review"></span> Marked for Review
+          </div>
+        </div>
+        <div class="palette-body">
+          <div class="palette-title">Question Palette</div>
+          <div class="grid-palette" id="paletteGrid">
+            <!-- Palette buttons generated dynamically -->
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Score Summary Modal -->
+    <div class="modal-overlay" id="resultModal">
+      <div class="modal-card">
+        <div class="modal-header">Exam Performance Report</div>
+        <div class="modal-body">
+          <div class="score-summary-grid">
+            <div class="score-card">
+              <div class="score-card-label">Total Questions</div>
+              <div class="score-card-val" id="resTotal">64</div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Total Score</div>
+              <div class="score-card-val" id="resScore">0</div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Correct Answers</div>
+              <div
+                class="score-card-val"
+                style="color: var(--success)"
+                id="resCorrect"
+              >
+                0
+              </div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Incorrect Answers</div>
+              <div
+                class="score-card-val"
+                style="color: var(--danger)"
+                id="resIncorrect"
+              >
+                0
+              </div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Attempted Questions</div>
+              <div class="score-card-val" id="resAttempted">0</div>
+            </div>
+            <div class="score-card">
+              <div class="score-card-label">Percentage Score</div>
+              <div class="score-card-val" id="resPercentage">0%</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-next" onclick="closeModalAndReview()">
+            Review Questions
+          </button>
+          <button class="btn btn-clear" onclick="resetQuizData()">
+            Retake Test
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* ==========================================================================
+                   CONFIGURABLE BRANDING & LINKS
+                   ========================================================================== */
+      const APP_CONFIG = {
+        brandName: "SPEEDY PUBLICATION",
+        buyBookUrl: "https://amzn.in/d/0hwIeqas",
+        marking: {
+          correct: 1,
+          incorrect: 0,
+        },
+        storageKey: "speedy_quiz_sep2026_79_state_v2",
+      };
+
+      /* ==========================================================================
+                   ALL 42 QUESTIONS WITH RANDOM CORRECT ANSWERS & DETAILED EXPLANATIONS
+                   ========================================================================== */
+      const questionsData = [
+      {"id":1,"question":"‘शादी अनुदान योजना’ किस राज्य से संबंधित है?","options":["उत्तर प्रदेश","बिहार","राजस्थान","पंजाब"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: उत्तर प्रदेश"},,
+{"id":2,"question":"‘अन्नपूर्णा सुपर स्पेशियलिटी योजना’ किस राज्य से संबंधित है?","options":["केरल","तमिलनाडु","कर्नाटक","आंध्र प्रदेश"],"correct":1,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: तमिलनाडु"},
+{"id":3,"question":"‘संध्या किरण योजना’ किस राज्य से संबंधित है?","options":["कर्नाटक","केरल","महाराष्ट्र","गुजरात"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: कर्नाटक"},
+{"id":4,"question":"‘दक्षायणी योजना’ किस राज्य से संबंधित है?","options":["तमिलनाडु","केरल","ओडिशा","आंध्र प्रदेश"],"correct":1,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: केरल"},
+{"id":5,"question":"‘मिशन कायाकल्प’ किससे संबंधित है?","options":["दिल्ली सरकार","पंजाब सरकार","केरल सरकार","मध्य प्रदेश सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: दिल्ली सरकार"},
+{"id":6,"question":"‘मिशन गोल्डन स्पाइस’ किस राज्य से संबंधित है?","options":["मिजोरम","मेघालय","असम","मणिपुर"],"correct":1,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: मेघालय"},
+{"id":7,"question":"‘मी भूमि-मी हक्कू कार्यक्रम’ किस राज्य से संबंधित है?","options":["तेलंगाना","आंध्र प्रदेश","ओडिशा","कर्नाटक"],"correct":1,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: आंध्र प्रदेश"},
+{"id":8,"question":"‘गो ईस्ट नीति’ किस राज्य से संबंधित है?","options":["ओडिशा","पश्चिम बंगाल","असम","बिहार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: ओडिशा"},
+{"id":9,"question":"‘कोवी मिशन’ किस राज्य से संबंधित है?","options":["असम","अरुणाचल प्रदेश","मेघालय","मणिपुर"],"correct":1,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: अरुणाचल प्रदेश"},
+{"id":10,"question":"‘निर्भय चेतना’ कार्यक्रम किससे संबंधित है?","options":["महिला एवं बाल विकास मंत्रालय","पंचायती राज मंत्रालय","गृह मंत्रालय","स्वास्थ्य मंत्रालय"],"correct":1,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: पंचायती राज मंत्रालय"},
+{"id":11,"question":"‘आदर्श शहर समृद्धि योजना’ किस राज्य से संबंधित है?","options":["छत्तीसगढ़","झारखंड","मध्य प्रदेश","राजस्थान"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: छत्तीसगढ़"},
+{"id":12,"question":"‘अन्नपूर्णा भंडार योजना’ किस राज्य से संबंधित है?","options":["बिहार","पश्चिम बंगाल","ओडिशा","झारखंड"],"correct":1,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: पश्चिम बंगाल"},
+{"id":13,"question":"‘आफ्टरकेयर योजना’ किससे संबंधित है?","options":["दिल्ली सरकार","पंजाब सरकार","हरियाणा सरकार","राजस्थान सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: दिल्ली सरकार"},
+{"id":14,"question":"‘मशरूम मिशन’ किस राज्य से संबंधित है?","options":["मिजोरम","आंध्र प्रदेश सरकार","मेघालय सरकार","सिक्किम सरकार"],"correct":1,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: आंध्र प्रदेश सरकार"},
+{"id":15,"question":"‘अदरक मिशन’ किस राज्य से संबंधित है?","options":["असम सरकार","मिजोरम सरकार","मणिपुर सरकार","त्रिपुरा सरकार"],"correct":1,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: मिजोरम सरकार"},
+{"id":16,"question":"‘हर घर योग अभियान’ किस राज्य से संबंधित है?","options":["मध्य प्रदेश सरकार","उत्तर प्रदेश सरकार","राजस्थान सरकार","गुजरात सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: मध्य प्रदेश सरकार"},
+{"id":17,"question":"‘सीएम-इंस्पायर योजना’ किस राज्य से संबंधित है?","options":["मेघालय सरकार","असम सरकार","केरल सरकार","मिजोरम सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: मेघालय सरकार"},
+{"id":18,"question":"‘प्रोजेक्ट जीरो’ किस राज्य से संबंधित है?","options":["केरल सरकार","तमिलनाडु सरकार","कर्नाटक सरकार","आंध्र प्रदेश सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: केरल सरकार"},
+{"id":19,"question":"‘जोनागिरी स्वर्ण परियोजना’ किससे संबंधित है?","options":["आंध्र प्रदेश (कुरनूल)","कर्नाटक (बेंगलुरु)","तेलंगाना (हैदराबाद)","ओडिशा (भुवनेश्वर)"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: आंध्र प्रदेश (कुरनूल)"},
+{"id":20,"question":"‘आरोग्य वन’ पहल किससे संबंधित है?","options":["NHAI","नीति आयोग","स्वास्थ्य मंत्रालय","पर्यावरण मंत्रालय"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: NHAI"},
+{"id":21,"question":"‘हिम सरोवर परियोजना’ किससे संबंधित है?","options":["लद्दाख सरकार","हिमाचल प्रदेश सरकार","उत्तराखंड सरकार","सिक्किम सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: लद्दाख सरकार"},
+{"id":22,"question":"‘माझे गाव, आरोग्य संपन्न गाव’ अभियान किस राज्य से संबंधित है?","options":["गुजरात सरकार","महाराष्ट्र सरकार","गोवा सरकार","कर्नाटक सरकार"],"correct":1,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: महाराष्ट्र सरकार"},
+{"id":23,"question":"‘लखपति बिटिया योजना’ किससे संबंधित है?","options":["दिल्ली सरकार","हरियाणा सरकार","पंजाब सरकार","राजस्थान सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: दिल्ली सरकार"},
+{"id":24,"question":"‘मुख्यमंत्री मावां धियां सत्कार योजना’ किस राज्य से संबंधित है?","options":["हरियाणा सरकार","पंजाब सरकार","हिमाचल प्रदेश सरकार","दिल्ली सरकार"],"correct":1,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: पंजाब सरकार"},
+{"id":25,"question":"‘निंगोल वन पहल’ किस राज्य से संबंधित है?","options":["मणिपुर सरकार","मेघालय सरकार","मिजोरम सरकार","असम सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: मणिपुर सरकार"},
+{"id":26,"question":"‘ANMOL योजना’ किससे संबंधित है?","options":["दिल्ली सरकार","तेलंगाना सरकार","आंध्र प्रदेश सरकार","कर्नाटक सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: दिल्ली सरकार"},
+{"id":27,"question":"‘इंदिरम्मा परिवार जीवन बीमा योजना’ किस राज्य से संबंधित है?","options":["तेलंगाना सरकार","आंध्र प्रदेश सरकार","कर्नाटक सरकार","तमिलनाडु सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: तेलंगाना सरकार"},
+{"id":28,"question":"‘दिव्यांग शक्ति योजना’ किस राज्य से संबंधित है?","options":["छत्तीसगढ़ सरकार","मध्य प्रदेश सरकार","झारखंड सरकार","ओडिशा सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: छत्तीसगढ़ सरकार"},
+{"id":29,"question":"‘गौधाम योजना’ किस राज्य से संबंधित है?","options":["राजस्थान","मध्य प्रदेश","गुजरात","छत्तीसगढ़"],"correct":1,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: मध्य प्रदेश"},
+{"id":30,"question":"‘फेयर से फुर्सत योजना’ किस राज्य से संबंधित है?","options":["राजस्थान सरकार","गुजरात सरकार","मध्य प्रदेश सरकार","हरियाणा सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: राजस्थान सरकार"},
+{"id":31,"question":"‘गाँव चलाओ योजना’ किस राज्य से संबंधित है?","options":["केरल सरकार","तमिलनाडु सरकार","कर्नाटक सरकार","आंध्र प्रदेश सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: केरल सरकार"},
+{"id":32,"question":"‘निर्भया दिशा’ पहल किस राज्य से संबंधित है?","options":["पंजाब सरकार","हरियाणा सरकार","दिल्ली सरकार","उत्तर प्रदेश सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: पंजाब सरकार"},
+{"id":33,"question":"‘मेरी रसोई योजना’ किस राज्य से संबंधित है?","options":["झारखंड सरकार","बिहार सरकार","ओडिशा सरकार","पश्चिम बंगाल सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: झारखंड सरकार"},
+{"id":34,"question":"‘वनजीवी दीदी’ पहल किससे संबंधित है?","options":["दिल्ली सरकार","झारखंड सरकार","छत्तीसगढ़ सरकार","मध्य प्रदेश सरकार"],"correct":1,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: झारखंड सरकार"},
+{"id":35,"question":"‘मुख्यमंत्री कौशल विकास योजना’ किससे संबंधित है?","options":["दिल्ली सरकार","पंजाब सरकार","हरियाणा सरकार","राजस्थान सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: दिल्ली सरकार"},
+{"id":36,"question":"‘मुख्यमंत्री ग्रामोथान योजना’ किस राज्य से संबंधित है?","options":["गुजरात सरकार","राजस्थान सरकार","मध्य प्रदेश सरकार","महाराष्ट्र सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: गुजरात सरकार"},
+{"id":37,"question":"‘नमो लक्ष्मी योजना’ किस राज्य से संबंधित है?","options":["गुजरात सरकार","महाराष्ट्र सरकार","राजस्थान सरकार","हरियाणा सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: गुजरात सरकार"},
+{"id":38,"question":"‘लखपति बिटिया योजना’ किससे संबंधित है?","options":["दिल्ली सरकार","पंजाब सरकार","हरियाणा सरकार","उत्तर प्रदेश सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: दिल्ली सरकार"},
+{"id":39,"question":"‘मुख्यमंत्री सेहत योजना’ किस राज्य से संबंधित है?","options":["पंजाब सरकार","हरियाणा सरकार","दिल्ली सरकार","राजस्थान सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: पंजाब सरकार"},
+{"id":40,"question":"‘ग्रीन-टू-गोल्ड पहल’ किस राज्य से संबंधित है?","options":["हिमाचल प्रदेश","उत्तराखंड","जम्मू-कश्मीर","सिक्किम"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: हिमाचल प्रदेश"},
+{"id":41,"question":"‘आमे पहिचा आमे भासरे योजना’ किस राज्य से संबंधित है?","options":["ओडिशा सरकार","पश्चिम बंगाल सरकार","बिहार सरकार","झारखंड सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: ओडिशा सरकार"},
+{"id":42,"question":"‘रायथन्ना मीकोसम पहल’ किस राज्य से संबंधित है?","options":["आंध्र प्रदेश सरकार","तेलंगाना सरकार","कर्नाटक सरकार","तमिलनाडु सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: आंध्र प्रदेश सरकार"},
+{"id":43,"question":"‘प्रोजेक्ट महादेव’ किस राज्य से संबंधित है?","options":["महाराष्ट्र सरकार","गोवा सरकार","गुजरात सरकार","मध्य प्रदेश सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: महाराष्ट्र सरकार"},
+{"id":44,"question":"‘आपकी योजना, आपकी सरकार, आपके द्वार’ किस राज्य से संबंधित है?","options":["झारखंड सरकार","बिहार सरकार","ओडिशा सरकार","पश्चिम बंगाल सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: झारखंड सरकार"},
+{"id":45,"question":"‘मुख्यमंत्री तीर्थ यात्रा योजना’ किस राज्य से संबंधित है?","options":["पंजाब सरकार","हरियाणा सरकार","दिल्ली सरकार","राजस्थान सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: पंजाब सरकार"},
+{"id":46,"question":"‘आपकी पूंजी आपका अधिकार’ अभियान किससे संबंधित है?","options":["निर्मला सीतारमण","स्मृति ईरानी","नितिन गडकरी","पीयूष गोयल"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: निर्मला सीतारमण"},
+{"id":47,"question":"‘श्रद्धांजलि योजना’ किस राज्य से संबंधित है?","options":["असम सरकार","मेघालय सरकार","मणिपुर सरकार","त्रिपुरा सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: असम सरकार"},
+{"id":48,"question":"‘म्हाजे घर योजना’ किस राज्य से संबंधित है?","options":["गोवा सरकार","महाराष्ट्र सरकार","केरल सरकार","कर्नाटक सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: गोवा सरकार"},
+{"id":49,"question":"‘अरुणोदय 3.0 योजना’ किस राज्य से संबंधित है?","options":["असम सरकार","अरुणाचल प्रदेश सरकार","मिजोरम सरकार","मेघालय सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: असम सरकार"},
+{"id":50,"question":"‘मुख्यमंत्री महिला रोजगार योजना’ किस राज्य से संबंधित है?","options":["बिहार सरकार","झारखंड सरकार","उत्तर प्रदेश सरकार","पश्चिम बंगाल सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: बिहार सरकार"},
+{"id":51,"question":"‘लाडो लक्ष्मी योजना’ किस राज्य से संबंधित है?","options":["हरियाणा सरकार","राजस्थान सरकार","पंजाब सरकार","गुजरात सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: हरियाणा सरकार"},
+{"id":52,"question":"‘मातृ वन’ पहल किस राज्य से संबंधित है?","options":["हरियाणा सरकार","पंजाब सरकार","उत्तर प्रदेश सरकार","राजस्थान सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: हरियाणा सरकार"},
+{"id":53,"question":"‘निजुत मोईना योजना 2.0’ किस राज्य से संबंधित है?","options":["असम सरकार","मेघालय सरकार","मणिपुर सरकार","त्रिपुरा सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: असम सरकार"},
+{"id":54,"question":"‘धायुमानवर योजना’ किस राज्य से संबंधित है?","options":["तमिलनाडु सरकार","केरल सरकार","कर्नाटक सरकार","आंध्र प्रदेश सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: तमिलनाडु सरकार"},
+{"id":55,"question":"‘अपना घर’ पहल किस मंत्रालय से संबंधित है?","options":["पेट्रोलियम मंत्रालय","गृह मंत्रालय","रेल मंत्रालय","सड़क परिवहन मंत्रालय"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: पेट्रोलियम मंत्रालय"},
+{"id":56,"question":"‘श्रमश्री योजना’ किस राज्य से संबंधित है?","options":["पश्चिम बंगाल","बिहार","झारखंड","ओडिशा"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: पश्चिम बंगाल"},
+{"id":57,"question":"‘एक सड़क-एक दिन’ योजना किससे संबंधित है?","options":["दिल्ली सरकार","पंजाब सरकार","हरियाणा सरकार","उत्तर प्रदेश सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: दिल्ली सरकार"},
+{"id":58,"question":"‘मुख्यमंत्री प्रतिज्ञा योजना’ किस राज्य से संबंधित है?","options":["बिहार सरकार","उत्तर प्रदेश सरकार","झारखंड सरकार","मध्य प्रदेश सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: बिहार सरकार"},
+{"id":59,"question":"‘मुख्यमंत्री वृंदावन ग्राम योजना’ किस राज्य से संबंधित है?","options":["मध्य प्रदेश सरकार","राजस्थान सरकार","गुजरात सरकार","छत्तीसगढ़ सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: मध्य प्रदेश सरकार"},
+{"id":60,"question":"‘पं. दीनदयाल उपाध्याय गरीबी मुक्त गांव योजना’ किस राज्य से संबंधित है?","options":["राजस्थान सरकार","गुजरात सरकार","मध्य प्रदेश सरकार","हरियाणा सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: राजस्थान सरकार"},
+{"id":61,"question":"‘जन सुरक्षा संतुष्टि अभियान’ किस राज्य से संबंधित है?","options":["गुजरात सरकार","महाराष्ट्र सरकार","राजस्थान सरकार","गोवा सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: गुजरात सरकार"},
+{"id":62,"question":"‘राजभवन अन्नधन योजना’ किस राज्य से संबंधित है?","options":["गोवा सरकार","बिहार सरकार","महाराष्ट्र सरकार","केरल सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: गोवा सरकार"},
+{"id":63,"question":"‘विवाह मंडप योजना’ किस राज्य से संबंधित है?","options":["बिहार सरकार","झारखंड सरकार","उत्तर प्रदेश सरकार","पश्चिम बंगाल सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: बिहार सरकार"},
+{"id":64,"question":"‘थालिलक्की वंदनम योजना’ किस राज्य से संबंधित है?","options":["आंध्र प्रदेश सरकार","केरल सरकार","कर्नाटक सरकार","तमिलनाडु सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: आंध्र प्रदेश सरकार"},
+{"id":65,"question":"‘KUSUM-C योजना’ किस राज्य से संबंधित है?","options":["कर्नाटक सरकार","महाराष्ट्र सरकार","गुजरात सरकार","तेलंगाना सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: कर्नाटक सरकार"},
+{"id":66,"question":"वृक्षारोपण परियोजना ‘विघ्न’ किस राज्य से संबंधित है?","options":["केरल सरकार","कर्नाटक सरकार","तमिलनाडु सरकार","आंध्र प्रदेश सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: केरल सरकार"},
+{"id":67,"question":"‘ANKUR पहल’ किस राज्य से संबंधित है?","options":["ओडिशा सरकार","असम सरकार","पश्चिम बंगाल सरकार","झारखंड सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: ओडिशा सरकार"},
+{"id":68,"question":"‘ज्योति योजना’ किस राज्य से संबंधित है?","options":["केरल सरकार","कर्नाटक सरकार","तमिलनाडु सरकार","गोवा सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: केरल सरकार"},
+{"id":69,"question":"‘एक देश एक धड़कन अभियान’ किस मंत्रालय से संबंधित है?","options":["संस्कृति मंत्रालय","गृह मंत्रालय","शिक्षा मंत्रालय","स्वास्थ्य मंत्रालय"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: संस्कृति मंत्रालय"},
+{"id":70,"question":"‘इंदिरा सौर गिरी जला विकासम योजना’ किस राज्य से संबंधित है?","options":["तेलंगाना सरकार","आंध्र प्रदेश सरकार","कर्नाटक सरकार","महाराष्ट्र सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: तेलंगाना सरकार"},
+{"id":71,"question":"‘एक परिवार एक उद्यमी अभियान’ किस राज्य से संबंधित है?","options":["आंध्र प्रदेश सरकार","तेलंगाना सरकार","कर्नाटक सरकार","तमिलनाडु सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: आंध्र प्रदेश सरकार"},
+{"id":72,"question":"‘विकसित कृषि संकल्प अभियान’ किस राज्य से संबंधित है?","options":["त्रिपुरा सरकार","असम सरकार","मणिपुर सरकार","मेघालय सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: त्रिपुरा सरकार"},
+{"id":73,"question":"‘सागर में सम्मान पहल’ किससे संबंधित है?","options":["परिवहन-जलमार्ग मंत्रालय","पेट्रोलियम मंत्रालय","बंदरगाह मंत्रालय","मत्स्य मंत्रालय"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: परिवहन-जलमार्ग मंत्रालय"},
+{"id":74,"question":"‘महिला संवाद अभियान’ किस राज्य से संबंधित है?","options":["बिहार सरकार","झारखंड सरकार","उत्तर प्रदेश सरकार","पश्चिम बंगाल सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: बिहार सरकार"},
+{"id":75,"question":"‘राष्ट्रीय कर्मयोगी जनसेवा कार्यक्रम’ किस मंत्रालय से संबंधित है?","options":["आयुष मंत्रालय","स्वास्थ्य मंत्रालय","गृह मंत्रालय","शिक्षा मंत्रालय"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: आयुष मंत्रालय"},
+{"id":76,"question":"‘पिंक ई-रिक्शा योजना’ किस राज्य से संबंधित है?","options":["महाराष्ट्र सरकार","गुजरात सरकार","गोवा सरकार","कर्नाटक सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: महाराष्ट्र सरकार"},
+{"id":77,"question":"‘जीरो पॉवर्टी-P4 पहल’ किस राज्य से संबंधित है?","options":["आंध्र प्रदेश सरकार","तेलंगाना सरकार","कर्नाटक सरकार","तमिलनाडु सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: आंध्र प्रदेश सरकार"},
+{"id":78,"question":"‘मुख्यमंत्री बालिका समृद्ध योजना’ किस राज्य से संबंधित है?","options":["त्रिपुरा सरकार","असम सरकार","मणिपुर सरकार","मेघालय सरकार"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: त्रिपुरा सरकार"},
+{"id":79,"question":"इस पेज में दी गई योजनाओं में से ‘आपकी पूंजी आपका अधिकार’ अभियान किससे संबंधित बताया गया है?","options":["निर्मला सीतारमण","संस्कृति मंत्रालय","पेट्रोलियम मंत्रालय","आयुष मंत्रालय"],"correct":0,"explanation":"स्रोत चित्र के अनुसार सही उत्तर: निर्मला सीतारमण"}
+      ];
+
+      /* ==========================================================================
+                   QUIZ STATE MANAGEMENT
+                   ========================================================================== */
+      let currentIndex = 0;
+      // States: 'not-visited', 'not-answered', 'answered', 'review', 'review-answered'
+      let userState = {
+        answers: {}, // { qIndex: selectedOptionIndex }
+        status: {}, // { qIndex: 'status-string' }
+        isSubmitted: false,
+      };
+
+      // Load from LocalStorage if available
+      function loadSavedState() {
+        const saved = localStorage.getItem(APP_CONFIG.storageKey);
+        if (saved) {
+          try {
+            userState = JSON.parse(saved);
+          } catch (e) {
+            console.error("Could not parse saved quiz state", e);
+          }
+        }
+        // Initialize unvisited questions
+        questionsData.forEach((_, idx) => {
+          if (!userState.status[idx]) {
+            userState.status[idx] = "not-visited";
+          }
+        });
+      }
+
+      function persistState() {
+        localStorage.setItem(APP_CONFIG.storageKey, JSON.stringify(userState));
+      }
+
+      /* ==========================================================================
+                   UI RENDERING FUNCTIONS
+                   ========================================================================== */
+      function initializeUI() {
+        document.getElementById("uiBrandName").innerText = APP_CONFIG.brandName;
+        document.getElementById("uiBuyBookBtn").href = APP_CONFIG.buyBookUrl;
+
+        renderPaletteGrid();
+        loadQuestion(currentIndex);
+      }
+
+      function renderPaletteGrid() {
+        const grid = document.getElementById("paletteGrid");
+        grid.innerHTML = "";
+        questionsData.forEach((_, idx) => {
+          const btn = document.createElement("button");
+          btn.className = `pal-btn ${userState.status[idx] || "not-visited"}`;
+          btn.innerText = idx + 1;
+          btn.id = `pal-btn-${idx}`;
+          btn.onclick = () => navigateToQuestion(idx);
+          grid.appendChild(btn);
+        });
+      }
+
+      function updatePaletteButton(idx) {
+        const btn = document.getElementById(`pal-btn-${idx}`);
+        if (!btn) return;
+        btn.className = `pal-btn ${userState.status[idx]}`;
+        if (idx === currentIndex) {
+          btn.classList.add("active-q");
+        }
+      }
+
+      function loadQuestion(index) {
+        currentIndex = index;
+        const q = questionsData[index];
+
+        // If status is not-visited, mark as not-answered upon viewing
+        if (userState.status[index] === "not-visited") {
+          userState.status[index] = "not-answered";
+        }
+
+        // Update question text and headers
+        document.getElementById("qNumberDisplay").innerText =
+          `Question No. ${index + 1} of ${questionsData.length}`;
+        document.getElementById("qTextDisplay").innerText = q.question;
+
+        // Render Options
+        const optionsContainer = document.getElementById("optionsContainer");
+        optionsContainer.innerHTML = "";
+
+        const userChoice = userState.answers[index];
+        const hasAnswered = userChoice !== undefined;
+
+        q.options.forEach((opt, optIdx) => {
+          const optDiv = document.createElement("div");
+          optDiv.className = "option-item";
+          optDiv.innerHTML = `<strong>(${String.fromCharCode(65 + optIdx)})</strong>&nbsp;&nbsp;${opt}`;
+
+          if (hasAnswered) {
+            optDiv.classList.add("disabled");
+            // Highlight logic
+            if (optIdx === q.correct) {
+              optDiv.classList.add("correct");
+            }
+            if (optIdx === userChoice && userChoice !== q.correct) {
+              optDiv.classList.add("incorrect");
+            }
+            if (optIdx === userChoice) {
+              optDiv.classList.add("selected");
+            }
+          } else {
+            optDiv.onclick = () => selectOption(index, optIdx);
+          }
+
+          optionsContainer.appendChild(optDiv);
+        });
+
+        // Show/Hide Explanation
+        const expBox = document.getElementById("explanationBox");
+        const expText = document.getElementById("explanationText");
+        if (hasAnswered) {
+          expText.innerText = q.explanation;
+          expBox.classList.add("active");
+        } else {
+          expBox.classList.remove("active");
+        }
+
+        // Update Active Status on all palette buttons
+        questionsData.forEach((_, i) => {
+          const pBtn = document.getElementById(`pal-btn-${i}`);
+          if (pBtn) {
+            pBtn.classList.remove("active-q");
+            if (i === currentIndex) pBtn.classList.add("active-q");
+          }
+        });
+        updatePaletteButton(index);
+        persistState();
+      }
+
+      /* Option click handler with immediate feedback */
+      function selectOption(qIdx, selectedOptIdx) {
+        if (userState.answers[qIdx] !== undefined) return; // Prevent changing after instant submit
+
+        userState.answers[qIdx] = selectedOptIdx;
+
+        // Update status
+        if (userState.status[qIdx] === "review") {
+          userState.status[qIdx] = "review-answered";
+        } else {
+          userState.status[qIdx] = "answered";
+        }
+
+        loadQuestion(qIdx);
+      }
+
+      function navigateToQuestion(index) {
+        loadQuestion(index);
+      }
+
+      /* ==========================================================================
+                   CONTROL ACTIONS (BUTTONS)
+                   ========================================================================== */
+      document.getElementById("btnNext").onclick = () => {
+        if (currentIndex < questionsData.length - 1) {
+          loadQuestion(currentIndex + 1);
+        }
+      };
+
+      document.getElementById("btnPrev").onclick = () => {
+        if (currentIndex > 0) {
+          loadQuestion(currentIndex - 1);
+        }
+      };
+
+      document.getElementById("btnClear").onclick = () => {
+        if (userState.answers[currentIndex] !== undefined) {
+          delete userState.answers[currentIndex];
+          userState.status[currentIndex] = "not-answered";
+          loadQuestion(currentIndex);
+        }
+      };
+
+      document.getElementById("btnReview").onclick = () => {
+        const currentStat = userState.status[currentIndex];
+        if (userState.answers[currentIndex] !== undefined) {
+          userState.status[currentIndex] =
+            currentStat === "review-answered" ? "answered" : "review-answered";
+        } else {
+          userState.status[currentIndex] =
+            currentStat === "review" ? "not-answered" : "review";
+        }
+        updatePaletteButton(currentIndex);
+        persistState();
+      };
+
+      document.getElementById("btnSubmit").onclick = () => {
+        submitQuiz();
+      };
+
+      /* ==========================================================================
+                   SUBMIT & SCORE CALCULATION
+                   ========================================================================== */
+      function submitQuiz() {
+        let correctCount = 0;
+        let incorrectCount = 0;
+        let attemptedCount = 0;
+
+        questionsData.forEach((q, idx) => {
+          const ans = userState.answers[idx];
+          if (ans !== undefined) {
+            attemptedCount++;
+            if (ans === q.correct) {
+              correctCount++;
+            } else {
+              incorrectCount++;
+            }
+          }
+        });
+
+        const totalMarks = correctCount * APP_CONFIG.marking.correct;
+        const percentage = ((totalMarks / questionsData.length) * 100).toFixed(
+          2,
+        );
+
+        document.getElementById("resTotal").innerText = questionsData.length;
+        document.getElementById("resScore").innerText =
+          `${totalMarks} / ${questionsData.length}`;
+        document.getElementById("resCorrect").innerText = correctCount;
+        document.getElementById("resIncorrect").innerText = incorrectCount;
+        document.getElementById("resAttempted").innerText =
+          `${attemptedCount} (${questionsData.length - attemptedCount} Unattempted)`;
+        document.getElementById("resPercentage").innerText = `${percentage}%`;
+
+        document.getElementById("resultModal").classList.add("active");
+      }
+
+      function closeModalAndReview() {
+        document.getElementById("resultModal").classList.remove("active");
+      }
+
+      function resetQuizData() {
+        if (
+          confirm(
+            "क्या आप वाकई परीक्षा को दोबारा शुरू करना चाहते हैं? आपकी वर्तमान प्रगति मिटा दी जाएगी।",
+          )
+        ) {
+          localStorage.removeItem(APP_CONFIG.storageKey);
+          userState = { answers: {}, status: {}, isSubmitted: false };
+          loadSavedState();
+          renderPaletteGrid();
+          loadQuestion(0);
+          closeModalAndReview();
+        }
+      }
+
+      // Startup
+      window.onload = () => {
+        loadSavedState();
+        initializeUI();
+      };
+    </script>
+  </body>
+</html>
